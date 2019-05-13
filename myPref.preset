@@ -1,0 +1,13 @@
+
+
+### Require administrator privileges ###
+RequireAdmin
+
+
+
+
+
+
+### Auxiliary Functions ###
+WaitForKey
+Restart
