@@ -118,6 +118,8 @@ DisableShortcutInName             # EnableShortcutInName
 # HideShortcutArrow               # ShowShortcutArrow
 # SetVisualFXPerformance          # SetVisualFXAppearance
 EnableTitleBarColor               # DisableTitleBarColor
+SetAppsDarkMode
+SetSystemDarkMode
 # EnableDarkTheme                 # DisableDarkTheme
 # AddENKeyboard                   # RemoveENKeyboard
 EnableNumlock                     # DisableNumlock
@@ -218,7 +220,7 @@ RemoveFaxPrinter                  # AddFaxPrinter
 
 
 ### Custom - myScript ###
-DownloadShutUp10
+#DownloadShutUp10
 
 
 
