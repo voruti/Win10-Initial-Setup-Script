@@ -75,7 +75,7 @@ EnableRestorePoints               # DisableRestorePoints
 # DisableSwapFile                 # EnableSwapFile
 # DisableNTFSLastAccess           # EnableNTFSLastAccess
 # SetBIOSTimeUTC                  # SetBIOSTimeLocal
-EnableHibernation                 # DisableHibernation
+# EnableHibernation               # DisableHibernation
 # DisableSleepButton              # EnableSleepButton
 # DisableSleepTimeout             # EnableSleepTimeout
 DisableFastStartup                # EnableFastStartup
