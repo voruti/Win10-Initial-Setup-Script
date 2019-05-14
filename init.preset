@@ -194,6 +194,10 @@ UnpinStartMenuTiles
 UnpinTaskbarIcons
 
 
+### Custom - myScript ###
+DownloadFirefox
+
+
 
 ### Auxiliary Functions ###
 # WaitForKey
