@@ -1,14 +1,7 @@
 
 
-
 ### Require administrator privileges ###
 RequireAdmin
-
-
-
-
-
-
 
 
 
@@ -17,54 +10,55 @@ DisableTelemetry                  # EnableTelemetry
 DisableWiFiSense                  # EnableWiFiSense
 # DisableSmartScreen              # EnableSmartScreen
 DisableWebSearch                  # EnableWebSearch
-
-
-
-
-# DisableAppSuggestions           # EnableAppSuggestions
-# DisableActivityHistory          # EnableActivityHistory
+DisableAppSuggestions             # EnableAppSuggestions
+DisableActivityHistory            # EnableActivityHistory
 # DisableBackgroundApps           # EnableBackgroundApps
-# DisableLocationTracking         # EnableLocationTracking
-# DisableMapUpdates               # EnableMapUpdates
-# DisableFeedback                 # EnableFeedback
-# DisableTailoredExperiences      # EnableTailoredExperiences
-# DisableAdvertisingID            # EnableAdvertisingID
-# DisableWebLangList              # EnableWebLangList
-# DisableCortana                  # EnableCortana
+DisableLocationTracking           # EnableLocationTracking
+DisableMapUpdates                 # EnableMapUpdates
+DisableFeedback                   # EnableFeedback
+DisableTailoredExperiences        # EnableTailoredExperiences
+DisableAdvertisingID              # EnableAdvertisingID
+DisableWebLangList                # EnableWebLangList
+DisableCortana                    # EnableCortana
 # DisableErrorReporting           # EnableErrorReporting
-# SetP2PUpdateLocal             # SetP2PUpdateInternet          # SetP2PUpdateDisable
-# DisableDiagTrack                # EnableDiagTrack
-# DisableWAPPush                  # EnableWAPPush
-# EnableClearRecentFiles        # DisableClearRecentFiles
-# DisableRecentFiles            # EnableRecentFiles
+SetP2PUpdateDisable               # SetP2PUpdateLocal           # SetP2PUpdateInternet
+DisableDiagTrack                  # EnableDiagTrack
+DisableWAPPush                    # EnableWAPPush
+EnableClearRecentFiles            # DisableClearRecentFiles
+DisableRecentFiles                # EnableRecentFiles
+
 
 ### Security Tweaks ###
-# SetUACLow                     # SetUACHigh
-# EnableSharingMappedDrives     # DisableSharingMappedDrives
+# SetUACLow                       # SetUACHigh
+# EnableSharingMappedDrives       # DisableSharingMappedDrives
 # DisableAdminShares              # EnableAdminShares
-# DisableSMB1                   # EnableSMB1
-# DisableSMBServer              # EnableSMBServer
-# DisableLLMNR                  # EnableLLMNR
-# DisableNCSIProbe              # EnableNCSIProbe
-# SetCurrentNetworkPrivate        # SetCurrentNetworkPublic
-# SetUnknownNetworksPrivate     # SetUnknownNetworksPublic
-# DisableNetDevicesAutoInst     # EnableNetDevicesAutoInst
-# DisableFirewall               # EnableFirewall
-# HideDefenderTrayIcon          # ShowDefenderTrayIcon
-# DisableDefender               # EnableDefender
-# DisableDefenderCloud          # EnableDefenderCloud
-# EnableCtrldFolderAccess       # DisableCtrldFolderAccess
-# EnableCIMemoryIntegrity       # DisableCIMemoryIntegrity
-# EnableDefenderAppGuard        # DisableDefenderAppGuard
-# HideAccountProtectionWarn       # ShowAccountProtectionWarn
-# DisableDownloadBlocking       # EnableDownloadBlocking
+# DisableSMB1                     # EnableSMB1
+# DisableSMBServer                # EnableSMBServer
+# DisableLLMNR                    # EnableLLMNR
+# DisableNCSIProbe                # EnableNCSIProbe
+SetCurrentNetworkPrivate          # SetCurrentNetworkPublic
+# SetUnknownNetworksPrivate       # SetUnknownNetworksPublic
+# DisableNetDevicesAutoInst       # EnableNetDevicesAutoInst
+# DisableFirewall                 # EnableFirewall
+HideDefenderTrayIcon              # ShowDefenderTrayIcon
+# DisableDefender                 # EnableDefender
+# DisableDefenderCloud            # EnableDefenderCloud
+# EnableCtrldFolderAccess         # DisableCtrldFolderAccess
+# EnableCIMemoryIntegrity         # DisableCIMemoryIntegrity
+# EnableDefenderAppGuard          # DisableDefenderAppGuard
+HideAccountProtectionWarn         # ShowAccountProtectionWarn
+# DisableDownloadBlocking         # EnableDownloadBlocking
 # DisableScriptHost               # EnableScriptHost
 # EnableDotNetStrongCrypto        # DisableDotNetStrongCrypto
-# EnableMeltdownCompatFlag      # DisableMeltdownCompatFlag
+# EnableMeltdownCompatFlag        # DisableMeltdownCompatFlag
 # EnableF8BootMenu                # DisableF8BootMenu
-# DisableBootRecovery           # EnableBootRecovery
-# DisableRecoveryAndReset       # EnableRecoveryAndReset
+# DisableBootRecovery             # EnableBootRecovery
+# DisableRecoveryAndReset         # EnableRecoveryAndReset
 # SetDEPOptOut                    # SetDEPOptIn
+
+
+
+
 
 ### Service Tweaks ###
 # DisableUpdateMSRT             # EnableUpdateMSRT
