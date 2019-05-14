@@ -21,10 +21,10 @@ DownloadFirefox
 InstallFirefox
 DownloadCCleaner
 InstallCCleaner
-# DownloadShutUp10
+DownloadShutUp10
 DownloadAvira
-DownloadNPP
-InstallNPP
+#DownloadNPP
+#InstallNPP
 
 
 
