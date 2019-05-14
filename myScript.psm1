@@ -28,13 +28,14 @@ Function InstallFirefox {
 # Remove CCleaner (Data)
 Function RemoveCCleaner {
     Write-Output "Removing CCleaner Portable Data..."
-	Remove-Item -path "$HOME\Documents\CCleaner" -recurse -exclude ccleaner.ini
+	$ccleanerDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
+	Remove-Item -path $ccleanerDirectory -recurse -exclude ccleaner.ini
 }
 
 # Download CCleaner
 Function DownloadCCleaner {
     Write-Output "Downloading CCleaner Portable..."
-	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup566.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
+	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup568.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
 	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
 
 	Invoke-WebRequest -Uri $ccleanerUrl -OutFile $ccleanerOutput
@@ -44,18 +45,19 @@ Function DownloadCCleaner {
 Function InstallCCleaner {
     Write-Output "Installing previously downloaded CCleaner..."
 	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
+	$ccleanerDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
-	[System.IO.Compression.ZipFile]::ExtractToDirectory($ccleanerOutput, "$HOME\Documents\CCleaner")
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($ccleanerOutput, $ccleanerDirectory)
 }
 
 # Download ShutUp10
 Function DownloadShutUp10 {
     Write-Output "Downloading ShutUp10..."
 	$shutUp10Url = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
-	$shutUp10Output = "$HOME\Documents\ShutUp10\OOSU10.exe"
+	$shutUp10Output = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10\OOSU10.exe"
 
-	$shutUp10Directory = "$HOME\Documents\ShutUp10"
+	$shutUp10Directory = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10"
 	If(!(Test-Path $shutUp10Directory))
 	{
 		New-Item -ItemType Directory -Force -Path $shutUp10Directory
@@ -86,9 +88,10 @@ Function DownloadNPP {
 Function InstallNPP {
     Write-Output "Installing previously downloaded Notepad++..."
 	$nppOutput = "$PSScriptRoot\npp_bin_x64.zip"
+	$nppDirectory = [Environment]::GetFolderPath('MyDocuments') + "\NotepadPP"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
-	[System.IO.Compression.ZipFile]::ExtractToDirectory($nppOutput, "$HOME\Documents\NotepadPP")
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($nppOutput, $nppDirectory)
 }
 
 
