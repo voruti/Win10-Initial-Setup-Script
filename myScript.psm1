@@ -1,5 +1,11 @@
 
 
+# Wait 5 seconds
+Function WaitASec {
+	Start-Sleep 5
+}
+
+
 # Download Firefox
 Function DownloadFirefox {
 	$firefoxUrl = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=de"
@@ -15,9 +21,20 @@ Function InstallFirefox {
 	& $firefoxOutput /DesktopShortcut=false /MaintenanceService=false; Wait-Process firefox_latest_ssl_win64_de
 }
 
-# Wait 5 seconds
-Function WaitASec {
-	Start-Sleep 5
+# Download CCleaner
+Function DownloadCCleaner {
+	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup557.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
+	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
+
+	Invoke-WebRequest -Uri $ccleanerUrl -OutFile $ccleanerOutput
+}
+
+# Install CCleaner
+Function InstallCCleaner {
+	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
+	
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	[System.IO.Compression.ZipFile]::ExtractToDirectory("$PSScriptRoot\ccsetup.zip", "$HOME\Documents\CCleaner")
 }
 
 
