@@ -160,7 +160,7 @@ UninstallOneDrive                 # InstallOneDrive
 # UninstallMsftBloat              # InstallMsftBloat
 # UninstallThirdPartyBloat        # InstallThirdPartyBloat
 # UninstallWindowsStore           # InstallWindowsStore
-DisableXboxFeatures               # EnableXboxFeatures
+# DisableXboxFeatures             # EnableXboxFeatures
 # DisableAdobeFlash               # EnableAdobeFlash
 DisableEdgePreload                # EnableEdgePreload
 DisableEdgeShortcutCreation       # EnableEdgeShortcutCreation
