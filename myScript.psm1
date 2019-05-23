@@ -34,8 +34,17 @@ Function InstallCCleaner {
 	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
-	[System.IO.Compression.ZipFile]::ExtractToDirectory("$PSScriptRoot\ccsetup.zip", "$HOME\Documents\CCleaner")
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($ccleanerOutput, "$HOME\Documents\CCleaner")
 }
+
+# Download ShutUp10
+Function DownloadShutUp10 {
+	$shutUp10Url = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
+	$shutUp10Output = "$HOME\Documents\ShutUp10\OOSU10.exe"
+
+	Invoke-WebRequest -Uri $shutUp10Url -OutFile $shutUp10Output
+}
+
 
 
 
