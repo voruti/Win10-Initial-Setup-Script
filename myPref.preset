@@ -194,6 +194,10 @@ RemoveFaxPrinter                  # AddFaxPrinter
 # UnpinTaskbarIcons
 
 
+### Custom - myScript ###
+DownloadShutUp10
+
+
 
 ### Auxiliary Functions ###
 # WaitForKey
