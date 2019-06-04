@@ -2,12 +2,14 @@
 
 # Wait 5 seconds
 Function WaitASec {
+    Write-Output "Waiting 5 seconds..."
 	Start-Sleep 5
 }
 
 
 # Download Firefox
 Function DownloadFirefox {
+    Write-Output "Downloading Firefox..."
 	$firefoxUrl = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=de"
 	$firefoxOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
 
@@ -16,6 +18,7 @@ Function DownloadFirefox {
 
 # Install Firefox
 Function InstallFirefox {
+    Write-Output "Installing previously downloaded Firefox..."
 	$firefoxOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
 	
 	& $firefoxOutput /DesktopShortcut=false /MaintenanceService=false; Wait-Process firefox_latest_ssl_win64_de
@@ -23,6 +26,7 @@ Function InstallFirefox {
 
 # Download CCleaner
 Function DownloadCCleaner {
+    Write-Output "Downloading CCleaner Portable..."
 	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup557.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
 	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
 
@@ -31,6 +35,7 @@ Function DownloadCCleaner {
 
 # Install CCleaner
 Function InstallCCleaner {
+    Write-Output "Installing previously downloaded CCleaner..."
 	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -39,6 +44,7 @@ Function InstallCCleaner {
 
 # Download ShutUp10
 Function DownloadShutUp10 {
+    Write-Output "Downloading ShutUp10..."
 	$shutUp10Url = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
 	$shutUp10Output = "$HOME\Documents\ShutUp10\OOSU10.exe"
 
