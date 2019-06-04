@@ -13,13 +13,16 @@ DisableWebSearch                  # EnableWebSearch
 DisableAppSuggestions             # EnableAppSuggestions
 DisableActivityHistory            # EnableActivityHistory
 # DisableBackgroundApps           # EnableBackgroundApps
-DisableLocationTracking           # EnableLocationTracking
+# DisableSensors                  # EnableSensors
+DisableLocation                   # EnableLocation
 DisableMapUpdates                 # EnableMapUpdates
 DisableFeedback                   # EnableFeedback
 DisableTailoredExperiences        # EnableTailoredExperiences
 DisableAdvertisingID              # EnableAdvertisingID
 DisableWebLangList                # EnableWebLangList
 DisableCortana                    # EnableCortana
+# DisableBiometrics                 # EnableBiometrics
+# DisableCamera                   # EnableCamera
 # DisableErrorReporting           # EnableErrorReporting
 SetP2PUpdateDisable               # SetP2PUpdateLocal           # SetP2PUpdateInternet
 DisableDiagTrack                  # EnableDiagTrack
@@ -34,10 +37,12 @@ DisableRecentFiles                # EnableRecentFiles
 # DisableAdminShares              # EnableAdminShares
 # DisableSMB1                     # EnableSMB1
 # DisableSMBServer                # EnableSMBServer
+# DisableNetBIOS                  # EnableNetBIOS
 # DisableLLMNR                    # EnableLLMNR
 # DisableNCSIProbe                # EnableNCSIProbe
 SetCurrentNetworkPrivate          # SetCurrentNetworkPublic
 # SetUnknownNetworksPrivate       # SetUnknownNetworksPublic
+DisableConnectionSharing          # EnableConnectionSharing
 # DisableNetDevicesAutoInst       # EnableNetDevicesAutoInst
 # DisableFirewall                 # EnableFirewall
 HideDefenderTrayIcon              # ShowDefenderTrayIcon
@@ -60,9 +65,11 @@ HideAccountProtectionWarn         # ShowAccountProtectionWarn
 ### Service Tweaks ###
 # DisableUpdateMSRT               # EnableUpdateMSRT
 # DisableUpdateDriver             # EnableUpdateDriver
-DisableUpdateRestart              # EnableUpdateRestart
+# DisableUpdateAutoDownload       # EnableUpdateAutoDownload
+DisableMaintenanceWakeUp          # EnableMaintenanceWakeUp
 # DisableHomeGroups               # EnableHomeGroups
 # DisableSharedExperiences        # EnableSharedExperiences
+# EnableClipboardHistory          # DisableClipboardHistory
 # DisableRemoteAssistance         # EnableRemoteAssistance
 # EnableRemoteDesktop             # DisableRemoteDesktop
 # DisableAutoplay                 # EnableAutoplay
@@ -73,6 +80,7 @@ EnableRestorePoints               # DisableRestorePoints
 # DisableSuperfetch               # EnableSuperfetch
 # DisableIndexing                 # EnableIndexing
 # DisableSwapFile                 # EnableSwapFile
+EnableNTFSLongPaths               # DisableNTFSLongPaths
 # DisableNTFSLastAccess           # EnableNTFSLastAccess
 # SetBIOSTimeUTC                  # SetBIOSTimeLocal
 # EnableHibernation               # DisableHibernation
@@ -88,8 +96,9 @@ DisableFastStartup                # EnableFastStartup
 # DisableLockScreenRS1            # EnableLockScreenRS1
 # HideNetworkFromLockScreen       # ShowNetworkOnLockScreen
 # HideShutdownFromLockScreen      # ShowShutdownOnLockScreen
+DisableLockScreenBlur             # EnableLockScreenBlur
 DisableAeroShake                  # EnableAeroShake
-DisableStickyKeys                 # EnableStickyKeys
+DisableAccessibilityKeys          # EnableAccessibilityKeys
 ShowTaskManagerDetails            # HideTaskManagerDetails
 ShowFileOperationsDetails         # HideFileOperationsDetails
 EnableFileDeleteConfirm           # DisableFileDeleteConfirm
@@ -115,23 +124,33 @@ EnableNumlock                     # DisableNumlock
 # SetSoundSchemeNone              # SetSoundSchemeDefault
 # DisableStartupSound             # EnableStartupSound
 # DisableChangingSoundScheme      # EnableChangingSoundScheme
+# EnableVerboseStatus             # DisableVerboseStatus
+DisableF1HelpKey                  # EnableF1HelpKey
 
 
 ### Explorer UI Tweaks ###
+ShowExplorerTitleFullPath         # HideExplorerTitleFullPath
 ShowKnownExtensions               # HideKnownExtensions
 ShowHiddenFiles                   # HideHiddenFiles
+# ShowSuperHiddenFiles            # HideSuperHiddenFiles
+ShowEmptyDrives                   # HideEmptyDrives
+ShowFolderMergeConflicts          # HideFolderMergeConflicts
 # EnableNavPaneExpand             # DisableNavPaneExpand
+ShowNavPaneAllFolders             # HideNavPaneAllFolders
 # EnableFldrSeparateProcess       # DisableFldrSeparateProcess
 # EnableRestoreFldrWindows        # DisableRestoreFldrWindows
+ShowEncCompFilesColor             # HideEncCompFilesColor
 # DisableSharingWizard            # EnableSharingWizard
 # HideSelectCheckboxes            # ShowSelectCheckboxes
 # HideSyncNotifications           # ShowSyncNotifications
 # HideRecentShortcuts             # ShowRecentShortcuts
 SetExplorerThisPC                 # SetExplorerQuickAccess
 # HideQuickAccess                 # ShowQuickAccess
+ShowRecycleBinOnDesktop           # HideRecycleBinFromDesktop
 # ShowThisPCOnDesktop             # HideThisPCFromDesktop
 # ShowUserFolderOnDesktop         # HideUserFolderFromDesktop
 # ShowControlPanelOnDesktop       # HideControlPanelFromDesktop
+# ShowNetworkOnDesktop            # HideNetworkFromDesktop
 # HideDesktopFromThisPC           # ShowDesktopInThisPC
 # HideDesktopFromExplorer         # ShowDesktopInExplorer
 # HideDocumentsFromThisPC         # ShowDocumentsInThisPC
@@ -161,10 +180,13 @@ UninstallOneDrive                 # InstallOneDrive
 # UninstallThirdPartyBloat        # InstallThirdPartyBloat
 # UninstallWindowsStore           # InstallWindowsStore
 # DisableXboxFeatures             # EnableXboxFeatures
+# DisableFullscreenOptims         # EnableFullscreenOptims
 # DisableAdobeFlash               # EnableAdobeFlash
 DisableEdgePreload                # EnableEdgePreload
 DisableEdgeShortcutCreation       # EnableEdgeShortcutCreation
 DisableIEFirstRun                 # EnableIEFirstRun
+DisableFirstLogonAnimation        # EnableFirstLogonAnimation
+DisableMediaSharing               # EnableMediaSharing
 # UninstallMediaPlayer            # InstallMediaPlayer
 UninstallInternetExplorer         # InstallInternetExplorer
 # UninstallWorkFolders            # InstallWorkFolders
