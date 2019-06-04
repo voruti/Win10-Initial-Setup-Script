@@ -48,6 +48,12 @@ Function DownloadShutUp10 {
 	$shutUp10Url = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
 	$shutUp10Output = "$HOME\Documents\ShutUp10\OOSU10.exe"
 
+	$shutUp10Directory = "$HOME\Documents\ShutUp10"
+	If(!(Test-Path $shutUp10Directory))
+	{
+		New-Item -ItemType Directory -Force -Path $shutUp10Directory
+	}
+
 	Invoke-WebRequest -Uri $shutUp10Url -OutFile $shutUp10Output
 }
 
