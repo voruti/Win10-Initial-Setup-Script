@@ -63,6 +63,12 @@ Function DownloadShutUp10 {
 		New-Item -ItemType Directory -Force -Path $shutUp10Directory
 	}
 
+	$shutUp10Directory = "$HOME\Documents\ShutUp10"
+	If(!(Test-Path $shutUp10Directory))
+	{
+		New-Item -ItemType Directory -Force -Path $shutUp10Directory
+	}
+
 	Invoke-WebRequest -Uri $shutUp10Url -OutFile $shutUp10Output
 }
 
