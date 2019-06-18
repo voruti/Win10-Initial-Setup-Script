@@ -56,4 +56,4 @@ While ($i -lt $args.Length) {
 }
 
 # Call the desired tweak functions
-$tweaks | ForEach-Object { $_ }
+$tweaks | ForEach-Object { Invoke-Expression $_ }
