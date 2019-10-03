@@ -23,6 +23,7 @@ DisableWebLangList                # EnableWebLangList
 DisableCortana                    # EnableCortana
 # DisableBiometrics                 # EnableBiometrics
 # DisableCamera                   # EnableCamera
+# DisableMicrophone               # EnableMicrophone
 # DisableErrorReporting           # EnableErrorReporting
 SetP2PUpdateDisable               # SetP2PUpdateLocal           # SetP2PUpdateInternet
 DisableDiagTrack                  # EnableDiagTrack
