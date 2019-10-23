@@ -68,8 +68,9 @@ Function DownloadShutUp10 {
 Function DownloadAvira {
     Write-Output "Downloading Avira..."
 	$aviraUrl = "http://install.avira-update.com/package/antivirus/win/de-de/avira_antivirus_de-de.exe"
+	$aviraOutput = "$PSScriptRoot\avira_antivirus_de-de.exe"
 
-	Invoke-WebRequest -Uri $aviraUrl
+	Invoke-WebRequest -Uri $aviraUrl -OutFile $aviraOutput
 }
 
 
