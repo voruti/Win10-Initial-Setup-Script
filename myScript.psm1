@@ -28,7 +28,7 @@ Function InstallFirefox {
 # Remove CCleaner (Data)
 Function RemoveCCleaner {
     Write-Output "Removing CCleaner Portable Data..."
-	Remove-Item –path $HOME\Documents\CCleaner -exclude ccleaner.ini
+	Remove-Item –path $HOME\Documents\CCleaner -recursive -exclude ccleaner.ini
 }
 
 # Download CCleaner
