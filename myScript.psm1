@@ -24,6 +24,13 @@ Function InstallFirefox {
 	& $firefoxOutput /DesktopShortcut=false /MaintenanceService=false; Wait-Process firefox_latest_ssl_win64_de
 }
 
+
+# Remove CCleaner (Data)
+Function RemoveCCleaner {
+    Write-Output "Removing CCleaner Portable Data..."
+	
+}
+
 # Download CCleaner
 Function DownloadCCleaner {
     Write-Output "Downloading CCleaner Portable..."
