@@ -73,6 +73,25 @@ Function DownloadAvira {
 	Invoke-WebRequest -Uri $aviraUrl -OutFile $aviraOutput
 }
 
+# Download Notepad++
+Function DownloadNPP {
+    Write-Output "Downloading Notepad++..."
+	$nppUrl = "http://download.notepad-plus-plus.org/repository/7.x/7.8/npp.7.8.bin.x64.zip" # https://notepad-plus-plus.org/downloads/
+	$nppOutput = "$PSScriptRoot\npp_bin_x64.zip"
+
+	Invoke-WebRequest -Uri $nppUrl -OutFile $nppOutput
+}
+
+# Install Notepad++
+Function InstallNPP {
+    Write-Output "Installing previously downloaded Notepad++..."
+	$nppOutput = "$PSScriptRoot\npp_bin_x64.zip"
+	
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($nppOutput, "$HOME\Documents\NotepadPP")
+}
+
+
 
 
 # Export functions
