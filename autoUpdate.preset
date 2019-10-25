@@ -1,0 +1,17 @@
+
+
+### Require administrator privileges ###
+# RequireAdmin
+
+
+
+### Custom - myScript ###
+RemoveCCleaner
+DownloadCCleaner
+InstallCCleaner
+
+
+
+### Auxiliary Functions ###
+# WaitForKey
+# Restart
