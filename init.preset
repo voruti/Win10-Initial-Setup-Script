@@ -23,6 +23,8 @@ DownloadCCleaner
 InstallCCleaner
 # DownloadShutUp10
 DownloadAvira
+DownloadNPP
+InstallNPP
 
 
 
