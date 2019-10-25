@@ -89,17 +89,6 @@ Function InstallNPP {
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($nppOutput, "$HOME\Documents\NotepadPP")
-    
-    
-    New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT
-    
-    If (!(Test-Path "HKCR:\*\shell\Notepad++")) {
-		New-Item -Path "HKCR:\*\shell\Notepad++" -Force | Out-Null
-	}
-    If (!(Test-Path "HKCR:\*\shell\Notepad++\command")) {
-		New-Item -Path "HKCR:\*\shell\Notepad++\command" -Force | Out-Null
-	}
-#    Set-Item -Path "HKCR:\*\shell\Notepad++\command" -Value "`"C:\Users\Till\Documents\NotepadPP\notepad++.exe`" %1"
 }
 
 
