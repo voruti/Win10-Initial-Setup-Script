@@ -35,7 +35,7 @@ Function RemoveCCleaner {
 # Download CCleaner
 Function DownloadCCleaner {
     Write-Output "Downloading CCleaner Portable..."
-	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup573.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
+	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup574.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
 	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
 
 	Invoke-WebRequest -Uri $ccleanerUrl -OutFile $ccleanerOutput
