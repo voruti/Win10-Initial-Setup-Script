@@ -9,7 +9,7 @@
 DisableTelemetry                  # EnableTelemetry
 DisableWiFiSense                  # EnableWiFiSense
 # DisableSmartScreen              # EnableSmartScreen
-DisableWebSearch                  # EnableWebSearch
+EnableWebSearch                   # DisableWebSearch
 DisableAppSuggestions             # EnableAppSuggestions
 DisableActivityHistory            # EnableActivityHistory
 # DisableBackgroundApps           # EnableBackgroundApps
