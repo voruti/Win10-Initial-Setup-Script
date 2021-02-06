@@ -9,6 +9,9 @@
 RemoveCCleaner
 DownloadCCleaner
 InstallCCleaner
+RemoveKeePass
+DownloadKeePass
+InstallKeePass
 DownloadShutUp10
 
 
