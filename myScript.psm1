@@ -51,6 +51,35 @@ Function InstallCCleaner {
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($ccleanerOutput, $ccleanerDirectory)
 }
 
+
+# Remove KeePass (Data)
+Function RemoveKeePass {
+	Write-Output "Removing KeePass Portable Data..."
+	$keepassDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
+	Remove-Item -path $keepassDirectory -recurse -include Languages, Plugins, XSL, KeePass.chm, KeePass.exe, KeePass.exe.config, KeePass.XmlSerializers.dll, KeePassLibC32.dll, KeePassLibC64.dll, License.txt, ShInstUtil.exe
+}
+
+# Download KeePass
+Function DownloadKeePass {
+	Write-Output "Downloading KeePass Portable..."
+	# $keepassUrl = "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.47/KeePass-2.47.zip" # https://keepass.info/download.html
+	$keepassUrl = "https://sourceforge.net/projects/keepass/files/latest/download"
+	$keepassOutput = "$PSScriptRoot\KeePass.zip"
+
+	Invoke-WebRequest -Uri $keepassUrl -OutFile $keepassOutput -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox
+}
+
+# Install KeePass
+Function InstallKeePass {
+	Write-Output "Installing previously downloaded KeePass..."
+	$keepassOutput = "$PSScriptRoot\KeePass.zip"
+	$keepassDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
+	
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($keepassOutput, $keepassDirectory)
+}
+
+
 # Download ShutUp10
 Function DownloadShutUp10 {
     Write-Output "Downloading ShutUp10..."
