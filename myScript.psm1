@@ -35,7 +35,7 @@ Function RemoveCCleaner {
 # Download CCleaner
 Function DownloadCCleaner {
     Write-Output "Downloading CCleaner Portable..."
-	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup577.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
+	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup579.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
 	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
 
 	Invoke-WebRequest -Uri $ccleanerUrl -OutFile $ccleanerOutput
@@ -95,6 +95,7 @@ Function DownloadShutUp10 {
 	Invoke-WebRequest -Uri $shutUp10Url -OutFile $shutUp10Output
 }
 
+
 # Download Avira
 Function DownloadAvira {
     Write-Output "Downloading Avira..."
@@ -104,25 +105,52 @@ Function DownloadAvira {
 	Invoke-WebRequest -Uri $aviraUrl -OutFile $aviraOutput
 }
 
+
 # Download Notepad++
 Function DownloadNPP {
     Write-Output "Downloading Notepad++..."
-	$nppUrl = "http://download.notepad-plus-plus.org/repository/7.x/7.8/npp.7.8.bin.x64.zip" # https://notepad-plus-plus.org/downloads/
-	$nppOutput = "$PSScriptRoot\npp_bin_x64.zip"
+	$programUrl = "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.9.5/npp.7.9.5.portable.x64.zip" # https://github.com/notepad-plus-plus/notepad-plus-plus/releases/
+	$programOutput = "$PSScriptRoot\npp_portable_x64.zip"
 
-	Invoke-WebRequest -Uri $nppUrl -OutFile $nppOutput
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
 # Install Notepad++
 Function InstallNPP {
     Write-Output "Installing previously downloaded Notepad++..."
-	$nppOutput = "$PSScriptRoot\npp_bin_x64.zip"
-	$nppDirectory = [Environment]::GetFolderPath('MyDocuments') + "\NotepadPP"
+	$programOutput = "$PSScriptRoot\npp_portable_x64.zip"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\NotepadPP"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
-	[System.IO.Compression.ZipFile]::ExtractToDirectory($nppOutput, $nppDirectory)
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
 }
 
+
+# Remove VSCode (Data)
+Function RemoveVSCode {
+	Write-Output "Removing VSCode Portable Data..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCode"
+	Remove-Item -path $programDirectory -recurse
+}
+
+# Download VSCode
+Function DownloadVSCode {
+	Write-Output "Downloading VSCode Portable..."
+	$programUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive"
+	$programOutput = "$PSScriptRoot\VSCode.zip"
+
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
+}
+
+# Install VSCode
+Function InstallVSCode {
+	Write-Output "Installing previously downloaded VSCode..."
+	$programOutput = "$PSScriptRoot\VSCode.zip"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCode"
+	
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
+}
 
 
 

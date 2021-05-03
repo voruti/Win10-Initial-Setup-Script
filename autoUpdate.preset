@@ -13,6 +13,9 @@ RemoveKeePass
 DownloadKeePass
 InstallKeePass
 DownloadShutUp10
+RemoveVSCode
+DownloadVSCode
+InstallVSCode
 
 
 
