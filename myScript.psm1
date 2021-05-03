@@ -2,14 +2,14 @@
 
 # Wait 5 seconds
 Function WaitASec {
-    Write-Output "Waiting 5 seconds..."
+	Write-Output "Waiting 5 seconds..."
 	Start-Sleep 5
 }
 
 
 # Download Firefox
 Function DownloadFirefox {
-    Write-Output "Downloading Firefox..."
+	Write-Output "Downloading Firefox..."
 	$firefoxUrl = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=de"
 	$firefoxOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
 
@@ -18,7 +18,7 @@ Function DownloadFirefox {
 
 # Install Firefox
 Function InstallFirefox {
-    Write-Output "Installing previously downloaded Firefox..."
+	Write-Output "Installing previously downloaded Firefox..."
 	$firefoxOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
 	
 	& $firefoxOutput /DesktopShortcut=false /MaintenanceService=false; Wait-Process firefox_latest_ssl_win64_de
@@ -27,14 +27,14 @@ Function InstallFirefox {
 
 # Remove CCleaner (Data)
 Function RemoveCCleaner {
-    Write-Output "Removing CCleaner Portable Data..."
+	Write-Output "Removing CCleaner Portable Data..."
 	$ccleanerDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
 	Remove-Item -path $ccleanerDirectory -recurse -exclude ccleaner.ini
 }
 
 # Download CCleaner
 Function DownloadCCleaner {
-    Write-Output "Downloading CCleaner Portable..."
+	Write-Output "Downloading CCleaner Portable..."
 	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup579.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
 	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
 
@@ -43,7 +43,7 @@ Function DownloadCCleaner {
 
 # Install CCleaner
 Function InstallCCleaner {
-    Write-Output "Installing previously downloaded CCleaner..."
+	Write-Output "Installing previously downloaded CCleaner..."
 	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
 	$ccleanerDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
 	
@@ -82,13 +82,12 @@ Function InstallKeePass {
 
 # Download ShutUp10
 Function DownloadShutUp10 {
-    Write-Output "Downloading ShutUp10..."
+	Write-Output "Downloading ShutUp10..."
 	$shutUp10Url = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
 	$shutUp10Output = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10\OOSU10.exe"
 
 	$shutUp10Directory = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10"
-	If(!(Test-Path $shutUp10Directory))
-	{
+	If (!(Test-Path $shutUp10Directory)) {
 		New-Item -ItemType Directory -Force -Path $shutUp10Directory
 	}
 
@@ -98,7 +97,7 @@ Function DownloadShutUp10 {
 
 # Download Avira
 Function DownloadAvira {
-    Write-Output "Downloading Avira..."
+	Write-Output "Downloading Avira..."
 	$aviraUrl = "http://install.avira-update.com/package/antivirus/win/de-de/avira_antivirus_de-de.exe"
 	$aviraOutput = "$PSScriptRoot\avira_antivirus_de-de.exe"
 
@@ -108,7 +107,7 @@ Function DownloadAvira {
 
 # Download Notepad++
 Function DownloadNPP {
-    Write-Output "Downloading Notepad++..."
+	Write-Output "Downloading Notepad++..."
 	$programUrl = "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.9.5/npp.7.9.5.portable.x64.zip" # https://github.com/notepad-plus-plus/notepad-plus-plus/releases/
 	$programOutput = "$PSScriptRoot\npp_portable_x64.zip"
 
@@ -117,7 +116,7 @@ Function DownloadNPP {
 
 # Install Notepad++
 Function InstallNPP {
-    Write-Output "Installing previously downloaded Notepad++..."
+	Write-Output "Installing previously downloaded Notepad++..."
 	$programOutput = "$PSScriptRoot\npp_portable_x64.zip"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\NotepadPP"
 	
