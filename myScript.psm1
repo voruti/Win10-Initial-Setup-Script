@@ -6,6 +6,23 @@ Function WaitASec {
 	Start-Sleep 5
 }
 
+# Check for running programs to prevent conflicts
+Function CheckRunningPrograms {
+	Write-Output "Checking running programs..."
+	$processes = @('CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'Code')
+	$doWait = $false
+	foreach ($process in $processes) {
+		if (Get-Process $process -ErrorAction SilentlyContinue) {
+			Write-Output "Please close $process!"
+			$doWait = $true
+		}
+	}
+
+	if ($doWait) {
+		WaitForKey
+	}
+}
+
 
 # Download Firefox
 Function DownloadFirefox {
