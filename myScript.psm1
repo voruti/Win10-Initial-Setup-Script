@@ -70,6 +70,18 @@ Function InstallCCleaner {
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
 }
 
+# Update CCleaner, if installed
+Function UpdateCCleaner {
+	Write-Output "Updating CCleaner..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
+	
+	if (Test-Path $programDirectory\*) {
+		RemoveCCleaner
+		DownloadCCleaner
+		InstallCCleaner
+	}
+}
+
 
 # Remove KeePass
 Function RemoveKeePass {
@@ -98,6 +110,18 @@ Function InstallKeePass {
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
 }
 
+# Update KeePass, if installed
+Function UpdateKeePass {
+	Write-Output "Updating KeePass..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
+	
+	if (Test-Path $programDirectory\*) {
+		RemoveKeePass
+		DownloadKeePass
+		InstallKeePass
+	}
+}
+
 
 # Download ShutUp10
 Function DownloadShutUp10 {
@@ -111,6 +135,16 @@ Function DownloadShutUp10 {
 	}
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
+}
+
+# Update ShutUp10, if installed
+Function UpdateShutUp10 {
+	Write-Output "Updating ShutUp10..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10"
+	
+	if (Test-Path $programDirectory\*) {
+		DownloadShutUp10
+	}
 }
 
 
