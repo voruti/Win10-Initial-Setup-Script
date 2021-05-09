@@ -8,16 +8,10 @@
 ### Custom - myScript ###
 CheckRunningPrograms
 
-RemoveCCleaner
-DownloadCCleaner
-InstallCCleaner
-RemoveKeePass
-DownloadKeePass
-InstallKeePass
-DownloadShutUp10
-RemoveVSCode
-DownloadVSCode
-InstallVSCode
+UpdateCCleaner
+UpdateKeePass
+UpdateShutUp10
+UpdateVSCode
 
 
 
