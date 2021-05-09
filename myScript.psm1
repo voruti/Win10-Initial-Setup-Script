@@ -29,98 +29,98 @@ Function CheckRunningPrograms {
 # Download Firefox
 Function DownloadFirefox {
 	Write-Output "Downloading Firefox..."
-	$firefoxUrl = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=de"
-	$firefoxOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
+	$programUrl = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=de"
+	$programOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
 
-	Invoke-WebRequest -Uri $firefoxUrl -OutFile $firefoxOutput
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
 # Install Firefox
 Function InstallFirefox {
 	Write-Output "Installing previously downloaded Firefox..."
-	$firefoxOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
+	$programOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
 	
-	& $firefoxOutput /DesktopShortcut=false /MaintenanceService=false; Wait-Process firefox_latest_ssl_win64_de
+	& $programOutput /DesktopShortcut=false /MaintenanceService=false; Wait-Process firefox_latest_ssl_win64_de
 }
 
 
-# Remove CCleaner (Data)
+# Remove CCleaner
 Function RemoveCCleaner {
-	Write-Output "Removing CCleaner Portable Data..."
-	$ccleanerDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
-	Remove-Item -path $ccleanerDirectory -recurse -exclude ccleaner.ini
+	Write-Output "Removing CCleaner..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
+	Remove-Item -path $programDirectory -recurse -exclude ccleaner.ini
 }
 
 # Download CCleaner
 Function DownloadCCleaner {
-	Write-Output "Downloading CCleaner Portable..."
-	$ccleanerUrl = "https://download.ccleaner.com/portable/ccsetup579.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
-	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
+	Write-Output "Downloading CCleaner..."
+	$programUrl = "https://download.ccleaner.com/portable/ccsetup579.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
+	$programOutput = "$PSScriptRoot\ccsetup.zip"
 
-	Invoke-WebRequest -Uri $ccleanerUrl -OutFile $ccleanerOutput
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
 # Install CCleaner
 Function InstallCCleaner {
 	Write-Output "Installing previously downloaded CCleaner..."
-	$ccleanerOutput = "$PSScriptRoot\ccsetup.zip"
-	$ccleanerDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
+	$programOutput = "$PSScriptRoot\ccsetup.zip"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
-	[System.IO.Compression.ZipFile]::ExtractToDirectory($ccleanerOutput, $ccleanerDirectory)
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
 }
 
 
-# Remove KeePass (Data)
+# Remove KeePass
 Function RemoveKeePass {
-	Write-Output "Removing KeePass Portable Data..."
-	$keepassDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
-	Remove-Item -path $keepassDirectory -recurse -include Languages, Plugins, XSL, KeePass.chm, KeePass.exe, KeePass.exe.config, KeePass.XmlSerializers.dll, KeePassLibC32.dll, KeePassLibC64.dll, License.txt, ShInstUtil.exe
+	Write-Output "Removing KeePass..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
+	Remove-Item -path $programDirectory -recurse -include Languages, Plugins, XSL, KeePass.chm, KeePass.exe, KeePass.exe.config, KeePass.XmlSerializers.dll, KeePassLibC32.dll, KeePassLibC64.dll, License.txt, ShInstUtil.exe
 }
 
 # Download KeePass
 Function DownloadKeePass {
-	Write-Output "Downloading KeePass Portable..."
-	# $keepassUrl = "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.47/KeePass-2.47.zip" # https://keepass.info/download.html
-	$keepassUrl = "https://sourceforge.net/projects/keepass/files/latest/download"
-	$keepassOutput = "$PSScriptRoot\KeePass.zip"
+	Write-Output "Downloading KeePass..."
+	# $programUrl = "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.47/KeePass-2.47.zip" # https://keepass.info/download.html
+	$programUrl = "https://sourceforge.net/projects/keepass/files/latest/download"
+	$programOutput = "$PSScriptRoot\KeePass.zip"
 
-	Invoke-WebRequest -Uri $keepassUrl -OutFile $keepassOutput -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox
 }
 
 # Install KeePass
 Function InstallKeePass {
 	Write-Output "Installing previously downloaded KeePass..."
-	$keepassOutput = "$PSScriptRoot\KeePass.zip"
-	$keepassDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
+	$programOutput = "$PSScriptRoot\KeePass.zip"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
-	[System.IO.Compression.ZipFile]::ExtractToDirectory($keepassOutput, $keepassDirectory)
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
 }
 
 
 # Download ShutUp10
 Function DownloadShutUp10 {
 	Write-Output "Downloading ShutUp10..."
-	$shutUp10Url = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
-	$shutUp10Output = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10\OOSU10.exe"
+	$programUrl = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
+	$programOutput = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10\OOSU10.exe"
 
-	$shutUp10Directory = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10"
-	If (!(Test-Path $shutUp10Directory)) {
-		New-Item -ItemType Directory -Force -Path $shutUp10Directory
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10"
+	If (!(Test-Path $programDirectory)) {
+		New-Item -ItemType Directory -Force -Path $programDirectory
 	}
 
-	Invoke-WebRequest -Uri $shutUp10Url -OutFile $shutUp10Output
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
 
 # Download Avira
 Function DownloadAvira {
 	Write-Output "Downloading Avira..."
-	$aviraUrl = "http://install.avira-update.com/package/antivirus/win/de-de/avira_antivirus_de-de.exe"
-	$aviraOutput = "$PSScriptRoot\avira_antivirus_de-de.exe"
+	$programUrl = "http://install.avira-update.com/package/antivirus/win/de-de/avira_antivirus_de-de.exe"
+	$programOutput = "$PSScriptRoot\avira_antivirus_de-de.exe"
 
-	Invoke-WebRequest -Uri $aviraUrl -OutFile $aviraOutput
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
 
@@ -144,16 +144,16 @@ Function InstallNPP {
 }
 
 
-# Remove VSCode (Data)
+# Remove VSCode
 Function RemoveVSCode {
-	Write-Output "Removing VSCode Portable Data..."
+	Write-Output "Removing VSCode..."
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCode"
 	Remove-Item -path $programDirectory -recurse
 }
 
 # Download VSCode
 Function DownloadVSCode {
-	Write-Output "Downloading VSCode Portable..."
+	Write-Output "Downloading VSCode..."
 	$programUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive"
 	$programOutput = "$PSScriptRoot\VSCode.zip"
 
