@@ -10,17 +10,19 @@ Function WaitASec {
 Function CheckRunningPrograms {
 	Write-Output "Checking running programs..."
 	$processes = @('CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'Code')
-	$doWait = $false
-	foreach ($process in $processes) {
-		if (Get-Process $process -ErrorAction SilentlyContinue) {
-			Write-Output "Please close $process!"
-			$doWait = $true
+	do {
+		$doWait = $false
+		foreach ($process in $processes) {
+			if (Get-Process $process -ErrorAction SilentlyContinue) {
+				Write-Output "Please close $process!"
+				$doWait = $true
+			}
 		}
-	}
 
-	if ($doWait) {
-		WaitForKey
-	}
+		if ($doWait) {
+			WaitForKey
+		}
+	} while ($doWait)
 }
 
 
