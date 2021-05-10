@@ -9,7 +9,7 @@ Function WaitASec {
 # Check for running programs to prevent conflicts
 Function CheckRunningPrograms {
 	Write-Output "Checking running programs..."
-	$processes = @('CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'Code')
+	$processes = @('CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty')
 	do {
 		$doWait = $false
 		foreach ($process in $processes) {
@@ -228,7 +228,7 @@ Function UpdateVSCode {
 Function RemoveGit {
 	Write-Output "Removing Git..."
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\Git"
-	Remove-Item -path $programDirectory -recurse
+	Remove-Item -path $programDirectory -recurse -force
 }
 
 # Download Git
@@ -252,6 +252,12 @@ Function InstallGit {
 		New-Item -Path "HKLM:\SOFTWARE\GitForWindows" -Force | Out-Null
 	}
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\GitForWindows" -Name "InstallPath" -Type String -Value $programDirectory
+
+	[System.Environment]::SetEnvironmentVariable(
+		"Path", 
+		[System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) + ";$programDirectory\cmd", 
+		[System.EnvironmentVariableTarget]::User
+	)
 }
 
 # Update Git, if installed
