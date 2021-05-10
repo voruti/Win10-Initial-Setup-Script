@@ -224,6 +224,49 @@ Function UpdateVSCode {
 }
 
 
+# Remove Git
+Function RemoveGit {
+	Write-Output "Removing Git..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\Git"
+	Remove-Item -path $programDirectory -recurse
+}
+
+# Download Git
+Function DownloadGit {
+	Write-Output "Downloading Git..."
+	$programUrl = "https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/PortableGit-2.31.1-64-bit.7z.exe"
+	$programOutput = "$PSScriptRoot\Git.7z.exe"
+
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
+}
+
+# Install Git
+Function InstallGit {
+	Write-Output "Installing previously downloaded Git..."
+	$programOutput = "$PSScriptRoot\Git.7z.exe"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\Git"
+	
+	Start-Process -Wait $programOutput -ArgumentList "-o`"$programDirectory`" -y"
+
+	If (!(Test-Path "HKLM:\SOFTWARE\GitForWindows")) {
+		New-Item -Path "HKLM:\SOFTWARE\GitForWindows" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\GitForWindows" -Name "InstallPath" -Type String -Value $programDirectory
+}
+
+# Update Git, if installed
+Function UpdateGit {
+	Write-Output "Updating Git..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\Git"
+	
+	if (Test-Path $programDirectory\*) {
+		RemoveGit
+		DownloadGit
+		InstallGit
+	}
+}
+
+
 
 # Export functions
 Export-ModuleMember -Function *
