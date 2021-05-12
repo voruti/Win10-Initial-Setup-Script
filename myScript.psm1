@@ -64,6 +64,10 @@ Function DownloadFirefox {
 	$programUrl = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=de"
 	$programOutput = "$PSScriptRoot\download\firefox_latest_ssl_win64_de.exe"
 
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
+
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
@@ -92,6 +96,10 @@ Function DownloadCCleaner {
 	Write-Output "Downloading CCleaner..."
 	$programUrl = "https://download.ccleaner.com/portable/ccsetup579.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
 	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -135,6 +143,10 @@ Function DownloadKeePass {
 	Write-Output "Downloading KeePass..."
 	$programUrl = "https://sourceforge.net/projects/keepass/files/latest/download"
 	$programOutput = "$PSScriptRoot\download\KeePass.zip"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox
 }
@@ -197,6 +209,10 @@ Function DownloadAvira {
 	$programUrl = "http://install.avira-update.com/package/antivirus/win/de-de/avira_antivirus_de-de.exe"
 	$programOutput = "$PSScriptRoot\download\avira_antivirus_de-de.exe"
 
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
+
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
@@ -206,6 +222,10 @@ Function DownloadNPP {
 	Write-Output "Downloading Notepad++..."
 	$programUrl = "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.9.5/npp.7.9.5.portable.x64.zip" # https://github.com/notepad-plus-plus/notepad-plus-plus/releases/
 	$programOutput = "$PSScriptRoot\download\npp_portable_x64.zip"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -237,6 +257,10 @@ Function DownloadVSCode {
 	Write-Output "Downloading VSCode..."
 	$programUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive"
 	$programOutput = "$PSScriptRoot\download\VSCode.zip"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -287,6 +311,10 @@ Function DownloadGit {
 	Write-Output "Downloading Git..."
 	$programUrl = "https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/PortableGit-2.31.1-64-bit.7z.exe"
 	$programOutput = "$PSScriptRoot\download\Git.7z.exe"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -351,6 +379,10 @@ Function DownloadMailCheck {
 	Write-Output "Downloading MailCheck..."
 	$programUrl = "https://www.d-jan.de/MailCheck2Setup118Build512-64bit.exe" # https://www.d-jan.de/download.shtml
 	$programOutput = "$PSScriptRoot\download\MailCheck.exe"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
