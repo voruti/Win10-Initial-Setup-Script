@@ -45,6 +45,18 @@ Function CreateDownloadFolder {
 	}
 }
 
+# Update all installed programs
+Function UpdateAllPrograms {
+	Write-Output "Updating all programs..."
+	
+	UpdateCCleaner
+	UpdateKeePass
+	UpdateShutUp10
+	UpdateVSCode
+	UpdateGit
+	UpdateMailCheck
+}
+
 
 # Download Firefox
 Function DownloadFirefox {
