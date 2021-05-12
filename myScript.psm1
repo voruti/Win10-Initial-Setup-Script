@@ -29,12 +29,20 @@ Function CheckRunningPrograms {
 	} while ($doWait)
 }
 
+# Create a download folder
+Function CreateDownloadFolder {
+	Write-Output "Creating download folder..."
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		New-Item -ItemType Directory -Path "$PSScriptRoot\download" -Force | Out-Null
+	}
+}
+
 
 # Download Firefox
 Function DownloadFirefox {
 	Write-Output "Downloading Firefox..."
 	$programUrl = "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=de"
-	$programOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
+	$programOutput = "$PSScriptRoot\download\firefox_latest_ssl_win64_de.exe"
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -42,7 +50,7 @@ Function DownloadFirefox {
 # Install Firefox
 Function InstallFirefox {
 	Write-Output "Installing previously downloaded Firefox..."
-	$programOutput = "$PSScriptRoot\firefox_latest_ssl_win64_de.exe"
+	$programOutput = "$PSScriptRoot\download\firefox_latest_ssl_win64_de.exe"
 	
 	& $programOutput /DesktopShortcut=false /MaintenanceService=false; Wait-Process firefox_latest_ssl_win64_de
 }
@@ -59,7 +67,7 @@ Function RemoveCCleaner {
 Function DownloadCCleaner {
 	Write-Output "Downloading CCleaner..."
 	$programUrl = "https://download.ccleaner.com/portable/ccsetup579.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
-	$programOutput = "$PSScriptRoot\ccsetup.zip"
+	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -67,7 +75,7 @@ Function DownloadCCleaner {
 # Install CCleaner
 Function InstallCCleaner {
 	Write-Output "Installing previously downloaded CCleaner..."
-	$programOutput = "$PSScriptRoot\ccsetup.zip"
+	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -99,7 +107,7 @@ Function DownloadKeePass {
 	Write-Output "Downloading KeePass..."
 	# $programUrl = "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.47/KeePass-2.47.zip" # https://keepass.info/download.html
 	$programUrl = "https://sourceforge.net/projects/keepass/files/latest/download"
-	$programOutput = "$PSScriptRoot\KeePass.zip"
+	$programOutput = "$PSScriptRoot\download\KeePass.zip"
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox
 }
@@ -107,7 +115,7 @@ Function DownloadKeePass {
 # Install KeePass
 Function InstallKeePass {
 	Write-Output "Installing previously downloaded KeePass..."
-	$programOutput = "$PSScriptRoot\KeePass.zip"
+	$programOutput = "$PSScriptRoot\download\KeePass.zip"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -156,7 +164,7 @@ Function UpdateShutUp10 {
 Function DownloadAvira {
 	Write-Output "Downloading Avira..."
 	$programUrl = "http://install.avira-update.com/package/antivirus/win/de-de/avira_antivirus_de-de.exe"
-	$programOutput = "$PSScriptRoot\avira_antivirus_de-de.exe"
+	$programOutput = "$PSScriptRoot\download\avira_antivirus_de-de.exe"
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -166,7 +174,7 @@ Function DownloadAvira {
 Function DownloadNPP {
 	Write-Output "Downloading Notepad++..."
 	$programUrl = "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.9.5/npp.7.9.5.portable.x64.zip" # https://github.com/notepad-plus-plus/notepad-plus-plus/releases/
-	$programOutput = "$PSScriptRoot\npp_portable_x64.zip"
+	$programOutput = "$PSScriptRoot\download\npp_portable_x64.zip"
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -174,7 +182,7 @@ Function DownloadNPP {
 # Install Notepad++
 Function InstallNPP {
 	Write-Output "Installing previously downloaded Notepad++..."
-	$programOutput = "$PSScriptRoot\npp_portable_x64.zip"
+	$programOutput = "$PSScriptRoot\download\npp_portable_x64.zip"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\NotepadPP"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -193,7 +201,7 @@ Function RemoveVSCode {
 Function DownloadVSCode {
 	Write-Output "Downloading VSCode..."
 	$programUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive"
-	$programOutput = "$PSScriptRoot\VSCode.zip"
+	$programOutput = "$PSScriptRoot\download\VSCode.zip"
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -201,7 +209,7 @@ Function DownloadVSCode {
 # Install VSCode
 Function InstallVSCode {
 	Write-Output "Installing previously downloaded VSCode..."
-	$programOutput = "$PSScriptRoot\VSCode.zip"
+	$programOutput = "$PSScriptRoot\download\VSCode.zip"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCode"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -239,7 +247,7 @@ Function RemoveGit {
 Function DownloadGit {
 	Write-Output "Downloading Git..."
 	$programUrl = "https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/PortableGit-2.31.1-64-bit.7z.exe"
-	$programOutput = "$PSScriptRoot\Git.7z.exe"
+	$programOutput = "$PSScriptRoot\download\Git.7z.exe"
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -247,7 +255,7 @@ Function DownloadGit {
 # Install Git
 Function InstallGit {
 	Write-Output "Installing previously downloaded Git..."
-	$programOutput = "$PSScriptRoot\Git.7z.exe"
+	$programOutput = "$PSScriptRoot\download\Git.7z.exe"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\Git"
 	
 	Start-Process -Wait $programOutput -ArgumentList "-o`"$programDirectory`" -y"
@@ -299,7 +307,7 @@ Function RemoveMailCheck {
 Function DownloadMailCheck {
 	Write-Output "Downloading MailCheck..."
 	$programUrl = "https://www.d-jan.de/MailCheck2Setup118Build512-64bit.exe" # https://www.d-jan.de/download.shtml
-	$programOutput = "$PSScriptRoot\MailCheck.exe"
+	$programOutput = "$PSScriptRoot\download\MailCheck.exe"
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
@@ -307,9 +315,9 @@ Function DownloadMailCheck {
 # Install MailCheck
 Function InstallMailCheck {
 	Write-Output "Installing previously downloaded MailCheck..."
-	$programOutput = "$PSScriptRoot\MailCheck.exe"
+	$programOutput = "$PSScriptRoot\download\MailCheck.exe"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\MailCheck"
-	$programInf = "$PSScriptRoot\MailCheck.inf"
+	$programInf = "$PSScriptRoot\download\MailCheck.inf"
 	
 	Set-Content $programInf "[Setup]`r`nSetupType=portable`r`nDir=$programDirectory"
 
