@@ -15,7 +15,7 @@ Function RequireAdminPortion {
 # Check for running programs to prevent conflicts
 Function CheckRunningPrograms {
 	Write-Output "Checking running programs..."
-	$processes = @('CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty')
+	$processes = @('CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty', 'MailCheck')
 	do {
 		$doWait = $false
 		foreach ($process in $processes) {
@@ -286,6 +286,47 @@ Function UpdateGit {
 		RemoveGit
 		DownloadGit
 		InstallGit
+	}
+}
+
+
+# Remove MailCheck
+Function RemoveMailCheck {
+	Write-Output "Removing MailCheck..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\MailCheck"
+	Remove-Item -path $programDirectory -recurse -exclude mailcheck.ini
+}
+
+# Download MailCheck
+Function DownloadMailCheck {
+	Write-Output "Downloading MailCheck..."
+	$programUrl = "https://www.d-jan.de/MailCheck2Setup118Build512-64bit.exe" # https://www.d-jan.de/download.shtml
+	$programOutput = "$PSScriptRoot\MailCheck.exe"
+
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
+}
+
+# Install MailCheck
+Function InstallMailCheck {
+	Write-Output "Installing previously downloaded MailCheck..."
+	$programOutput = "$PSScriptRoot\MailCheck.exe"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\MailCheck"
+	$programInf = "$PSScriptRoot\MailCheck.inf"
+	
+	Set-Content $programInf "[Setup]`r`nSetupType=portable`r`nDir=$programDirectory"
+
+	Start-Process -Wait $programOutput -ArgumentList "/LOADINF=`"$programInf`""
+}
+
+# Update MailCheck, if installed
+Function UpdateMailCheck {
+	Write-Output "Updating MailCheck..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\MailCheck"
+	
+	if (Test-Path $programDirectory\*) {
+		RemoveMailCheck
+		DownloadMailCheck
+		InstallMailCheck
 	}
 }
 
