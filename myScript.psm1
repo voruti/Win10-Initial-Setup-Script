@@ -57,6 +57,13 @@ Function UpdateAllPrograms {
 	UpdateMailCheck
 }
 
+# Print some empty lines to the console
+Function ClearConsole {
+	for ($i = 0; $i -lt 10; $i++) {
+		Write-Output ""
+	}
+}
+
 
 # Download Firefox
 Function DownloadFirefox {
