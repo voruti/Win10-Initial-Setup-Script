@@ -17,16 +17,14 @@ UnpinTaskbarIcons
 
 
 ### Custom - myScript ###
-CheckAllRunningPrograms
-
-DownloadFirefox
 InstallFirefox
-DownloadCCleaner
 InstallCCleaner
-DownloadKeePass
 InstallKeePass
 DownloadShutUp10
 DownloadAvira
+InstallVSCode
+InstallGit
+InstallMailCheck
 
 
 

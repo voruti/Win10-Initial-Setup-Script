@@ -30,7 +30,7 @@ Function CheckRunningProgram {
 # Check for all running programs to prevent conflicts
 Function CheckAllRunningPrograms {
 	Write-Output "Checking all running programs..."
-	$processes = @('CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty', 'MailCheck')
+	$processes = @('firefox', 'CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'notepad++', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty', 'MailCheck')
 
 	foreach ($process in $processes) {
 		CheckRunningProgram $process
@@ -79,6 +79,7 @@ Function InstallFirefox {
 	If (!(Test-Path -PathType Leaf "$programOutput")) {
 		DownloadFirefox
 	}
+	CheckRunningProgram "firefox"
 	
 	& $programOutput /DesktopShortcut=false /MaintenanceService=false; Wait-Process firefox_latest_ssl_win64_de
 }
@@ -88,6 +89,10 @@ Function InstallFirefox {
 Function RemoveCCleaner {
 	Write-Output "Removing CCleaner..."
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
+
+	CheckRunningProgram "CCleaner64"
+	CheckRunningProgram "CCleaner"
+
 	Remove-Item -path $programDirectory -recurse -exclude ccleaner.ini
 }
 
@@ -113,6 +118,8 @@ Function InstallCCleaner {
 	If (!(Test-Path -PathType Leaf "$programOutput")) {
 		DownloadCCleaner
 	}
+	CheckRunningProgram "CCleaner64"
+	CheckRunningProgram "CCleaner"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
@@ -135,6 +142,9 @@ Function UpdateCCleaner {
 Function RemoveKeePass {
 	Write-Output "Removing KeePass..."
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
+
+	CheckRunningProgram "KeePass"
+
 	Remove-Item -path $programDirectory -recurse -include Languages, Plugins, XSL, KeePass.chm, KeePass.exe, KeePass.exe.config, KeePass.XmlSerializers.dll, KeePassLibC32.dll, KeePassLibC64.dll, License.txt, ShInstUtil.exe
 }
 
@@ -160,6 +170,7 @@ Function InstallKeePass {
 	If (!(Test-Path -PathType Leaf "$programOutput")) {
 		DownloadKeePass
 	}
+	CheckRunningProgram "KeePass"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
@@ -183,8 +194,10 @@ Function DownloadShutUp10 {
 	Write-Output "Downloading ShutUp10..."
 	$programUrl = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
 	$programOutput = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10\OOSU10.exe"
-
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\ShutUp10"
+
+	CheckRunningProgram "OOSU10"
+
 	If (!(Test-Path $programDirectory)) {
 		New-Item -ItemType Directory -Force -Path $programDirectory
 	}
@@ -239,6 +252,7 @@ Function InstallNPP {
 	If (!(Test-Path -PathType Leaf "$programOutput")) {
 		DownloadNPP
 	}
+	CheckRunningProgram "notepad++"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
@@ -249,6 +263,15 @@ Function InstallNPP {
 Function RemoveVSCode {
 	Write-Output "Removing VSCode..."
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCode"
+
+	CheckRunningProgram "Code"
+	CheckRunningProgram "vsls-agent"
+	CheckRunningProgram "git-bash"
+	CheckRunningProgram "bash"
+	CheckRunningProgram "git"
+	CheckRunningProgram "sh"
+	CheckRunningProgram "mintty"
+
 	Remove-Item -path $programDirectory -recurse
 }
 
@@ -274,6 +297,13 @@ Function InstallVSCode {
 	If (!(Test-Path -PathType Leaf "$programOutput")) {
 		DownloadVSCode
 	}
+	CheckRunningProgram "Code"
+	CheckRunningProgram "vsls-agent"
+	CheckRunningProgram "git-bash"
+	CheckRunningProgram "bash"
+	CheckRunningProgram "git"
+	CheckRunningProgram "sh"
+	CheckRunningProgram "mintty"
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
@@ -303,6 +333,16 @@ Function UpdateVSCode {
 Function RemoveGit {
 	Write-Output "Removing Git..."
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\Git"
+
+	CheckRunningProgram "Code"
+	CheckRunningProgram "vsls-agent"
+	CheckRunningProgram "GitHubDesktop"
+	CheckRunningProgram "git-bash"
+	CheckRunningProgram "bash"
+	CheckRunningProgram "git"
+	CheckRunningProgram "sh"
+	CheckRunningProgram "mintty"
+
 	Remove-Item -path $programDirectory -recurse -force
 }
 
@@ -328,6 +368,14 @@ Function InstallGit {
 	If (!(Test-Path -PathType Leaf "$programOutput")) {
 		DownloadGit
 	}
+	CheckRunningProgram "Code"
+	CheckRunningProgram "vsls-agent"
+	CheckRunningProgram "GitHubDesktop"
+	CheckRunningProgram "git-bash"
+	CheckRunningProgram "bash"
+	CheckRunningProgram "git"
+	CheckRunningProgram "sh"
+	CheckRunningProgram "mintty"
 	
 	Start-Process -Wait $programOutput -ArgumentList "-o`"$programDirectory`" -y"
 
@@ -371,6 +419,9 @@ Function UpdateGit {
 Function RemoveMailCheck {
 	Write-Output "Removing MailCheck..."
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\MailCheck"
+
+	CheckRunningProgram "MailCheck"
+
 	Remove-Item -path $programDirectory -recurse -exclude mailcheck.ini
 }
 
@@ -397,6 +448,7 @@ Function InstallMailCheck {
 	If (!(Test-Path -PathType Leaf "$programOutput")) {
 		DownloadMailCheck
 	}
+	CheckRunningProgram "MailCheck"
 	
 	Set-Content $programInf "[Setup]`r`nSetupType=portable`r`nDir=$programDirectory"
 
