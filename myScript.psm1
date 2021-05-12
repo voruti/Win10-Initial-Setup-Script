@@ -6,6 +6,12 @@ Function WaitASec {
 	Start-Sleep 5
 }
 
+# Execute a part of the script with administrator privileges
+Function RequireAdminPortion {
+	param([ScriptBlock]$Code)
+	Start-Process powershell -Verb RunAs -Wait -ArgumentList "$Code"
+}
+
 # Check for running programs to prevent conflicts
 Function CheckRunningPrograms {
 	Write-Output "Checking running programs..."
@@ -248,16 +254,27 @@ Function InstallGit {
 	
 	Start-Process -Wait $programOutput -ArgumentList "-o`"$programDirectory`" -y"
 
-	If (!(Test-Path "HKLM:\SOFTWARE\GitForWindows")) {
-		New-Item -Path "HKLM:\SOFTWARE\GitForWindows" -Force | Out-Null
+	If (!(Test-Path 'HKLM:\SOFTWARE\GitForWindows')) {
+		RequireAdminPortion {
+			New-Item -Path 'HKLM:\SOFTWARE\GitForWindows' -Force | Out-Null
+			$programDirectory = [Environment]::GetFolderPath('MyDocuments') + '\Git'
+			Set-ItemProperty -Path 'HKLM:\SOFTWARE\GitForWindows' -Name 'InstallPath' -Type String -Value $programDirectory
+		}
 	}
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\GitForWindows" -Name "InstallPath" -Type String -Value $programDirectory
+	ElseIf ((Get-ItemProperty -Path 'HKLM:\SOFTWARE\GitForWindows' -Name 'InstallPath').InstallPath -ne $programDirectory) {
+		RequireAdminPortion {
+			$programDirectory = [Environment]::GetFolderPath('MyDocuments') + '\Git'
+			Set-ItemProperty -Path 'HKLM:\SOFTWARE\GitForWindows' -Name 'InstallPath' -Type String -Value $programDirectory
+		}
+	}
 
-	[System.Environment]::SetEnvironmentVariable(
-		"Path", 
-		[System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) + ";$programDirectory\cmd", 
-		[System.EnvironmentVariableTarget]::User
-	)
+	If (!([System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) -Match [regex]::escape("$programDirectory\cmd"))) {
+		[System.Environment]::SetEnvironmentVariable(
+			"Path", 
+			[System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) + ";$programDirectory\cmd", 
+			[System.EnvironmentVariableTarget]::User
+		)
+	}
 }
 
 # Update Git, if installed
