@@ -131,8 +131,8 @@ Function UpdateCCleaner {
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
 	
 	if (Test-Path $programDirectory\*) {
-		RemoveCCleaner
 		DownloadCCleaner
+		RemoveCCleaner
 		InstallCCleaner
 	}
 }
@@ -182,8 +182,8 @@ Function UpdateKeePass {
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
 	
 	if (Test-Path $programDirectory\*) {
-		RemoveKeePass
 		DownloadKeePass
+		RemoveKeePass
 		InstallKeePass
 	}
 }
@@ -322,8 +322,8 @@ Function UpdateVSCode {
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCode"
 	
 	if (Test-Path $programDirectory\*) {
-		RemoveVSCode
 		DownloadVSCode
+		RemoveVSCode
 		InstallVSCode
 	}
 }
@@ -408,8 +408,8 @@ Function UpdateGit {
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\Git"
 	
 	if (Test-Path $programDirectory\*) {
-		RemoveGit
 		DownloadGit
+		RemoveGit
 		InstallGit
 	}
 }
@@ -461,8 +461,8 @@ Function UpdateMailCheck {
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\MailCheck"
 	
 	if (Test-Path $programDirectory\*) {
-		RemoveMailCheck
 		DownloadMailCheck
+		RemoveMailCheck
 		InstallMailCheck
 	}
 }
