@@ -1,5 +1,3 @@
-
-
 # Wait 5 seconds
 Function WaitASec {
 	Write-Output "Waiting 5 seconds..."
