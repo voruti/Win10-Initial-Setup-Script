@@ -17,6 +17,8 @@ UnpinTaskbarIcons
 
 
 ### Custom - myScript ###
+CreateDownloadFolder
+
 DownloadFirefox
 InstallFirefox
 DownloadCCleaner
