@@ -49,8 +49,12 @@ Function DownloadFirefox {
 
 # Install Firefox
 Function InstallFirefox {
-	Write-Output "Installing previously downloaded Firefox..."
+	Write-Output "Installing Firefox..."
 	$programOutput = "$PSScriptRoot\download\firefox_latest_ssl_win64_de.exe"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadFirefox
+	}
 	
 	& $programOutput /DesktopShortcut=false /MaintenanceService=false; Wait-Process firefox_latest_ssl_win64_de
 }
@@ -74,9 +78,13 @@ Function DownloadCCleaner {
 
 # Install CCleaner
 Function InstallCCleaner {
-	Write-Output "Installing previously downloaded CCleaner..."
+	Write-Output "Installing CCleaner..."
 	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\CCleaner"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadCCleaner
+	}
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
@@ -114,9 +122,13 @@ Function DownloadKeePass {
 
 # Install KeePass
 Function InstallKeePass {
-	Write-Output "Installing previously downloaded KeePass..."
+	Write-Output "Installing KeePass..."
 	$programOutput = "$PSScriptRoot\download\KeePass.zip"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\KeePass"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadKeePass
+	}
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
@@ -181,9 +193,13 @@ Function DownloadNPP {
 
 # Install Notepad++
 Function InstallNPP {
-	Write-Output "Installing previously downloaded Notepad++..."
+	Write-Output "Installing Notepad++..."
 	$programOutput = "$PSScriptRoot\download\npp_portable_x64.zip"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\NotepadPP"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadNPP
+	}
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
@@ -208,9 +224,13 @@ Function DownloadVSCode {
 
 # Install VSCode
 Function InstallVSCode {
-	Write-Output "Installing previously downloaded VSCode..."
+	Write-Output "Installing VSCode..."
 	$programOutput = "$PSScriptRoot\download\VSCode.zip"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCode"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadVSCode
+	}
 	
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
@@ -254,9 +274,13 @@ Function DownloadGit {
 
 # Install Git
 Function InstallGit {
-	Write-Output "Installing previously downloaded Git..."
+	Write-Output "Installing Git..."
 	$programOutput = "$PSScriptRoot\download\Git.7z.exe"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\Git"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadGit
+	}
 	
 	Start-Process -Wait $programOutput -ArgumentList "-o`"$programDirectory`" -y"
 
@@ -314,10 +338,14 @@ Function DownloadMailCheck {
 
 # Install MailCheck
 Function InstallMailCheck {
-	Write-Output "Installing previously downloaded MailCheck..."
+	Write-Output "Installing MailCheck..."
 	$programOutput = "$PSScriptRoot\download\MailCheck.exe"
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\MailCheck"
 	$programInf = "$PSScriptRoot\download\MailCheck.inf"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadMailCheck
+	}
 	
 	Set-Content $programInf "[Setup]`r`nSetupType=portable`r`nDir=$programDirectory"
 
