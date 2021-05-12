@@ -113,7 +113,6 @@ Function RemoveKeePass {
 # Download KeePass
 Function DownloadKeePass {
 	Write-Output "Downloading KeePass..."
-	# $programUrl = "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.47/KeePass-2.47.zip" # https://keepass.info/download.html
 	$programUrl = "https://sourceforge.net/projects/keepass/files/latest/download"
 	$programOutput = "$PSScriptRoot\download\KeePass.zip"
 
