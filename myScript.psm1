@@ -59,7 +59,7 @@ Function UpdateAllPrograms {
 
 # Print some empty lines to the console
 Function ClearConsole {
-	for ($i = 0; $i -lt 10; $i++) {
+	for ($i = 0; $i -lt 6; $i++) {
 		Write-Output ""
 	}
 }
@@ -206,7 +206,7 @@ Function DownloadShutUp10 {
 	CheckRunningProgram "OOSU10"
 
 	If (!(Test-Path $programDirectory)) {
-		New-Item -ItemType Directory -Force -Path $programDirectory
+		New-Item -ItemType Directory -Force -Path $programDirectory | Out-Null
 	}
 
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
