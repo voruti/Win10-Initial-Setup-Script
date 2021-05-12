@@ -10,23 +10,31 @@ Function RequireAdminPortion {
 	Start-Process powershell -Verb RunAs -Wait -ArgumentList "$Code"
 }
 
-# Check for running programs to prevent conflicts
-Function CheckRunningPrograms {
-	Write-Output "Checking running programs..."
-	$processes = @('CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty', 'MailCheck')
+# Check for single running program to prevent conflicts
+Function CheckRunningProgram {
+	param([parameter(Mandatory = $true)][String]$process)
+	Write-Debug "Checking if program $process is running..."
 	do {
 		$doWait = $false
-		foreach ($process in $processes) {
-			if (Get-Process $process -ErrorAction SilentlyContinue) {
-				Write-Output "Please close $process!"
-				$doWait = $true
-			}
+		if (Get-Process $process -ErrorAction SilentlyContinue) {
+			Write-Output "Please close $process!"
+			$doWait = $true
 		}
 
 		if ($doWait) {
 			WaitForKey
 		}
 	} while ($doWait)
+}
+
+# Check for all running programs to prevent conflicts
+Function CheckAllRunningPrograms {
+	Write-Output "Checking all running programs..."
+	$processes = @('CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty', 'MailCheck')
+
+	foreach ($process in $processes) {
+		CheckRunningProgram $process
+	}
 }
 
 # Create a download folder
