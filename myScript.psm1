@@ -366,7 +366,14 @@ Function RemoveGit {
 # Download Git
 Function DownloadGit {
 	Write-Output "Downloading Git..."
-	$programUrl = "https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/PortableGit-2.31.1-64-bit.7z.exe"
+
+	$repo = "git-for-windows/git"
+	$releases = "https://api.github.com/repos/$repo/releases/latest"
+	$tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name.Substring(1).Replace(".windows.1", "")
+	$file = "PortableGit-$tag-64-bit.7z.exe"
+	$programUrl = "https://github.com/$repo/releases/latest/download/$file"
+	Write-Output "Using download URL $programUrl"
+
 	$programOutput = "$PSScriptRoot\download\Git.7z.exe"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
