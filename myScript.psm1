@@ -240,7 +240,17 @@ Function DownloadAvira {
 # Download Notepad++
 Function DownloadNPP {
 	Write-Output "Downloading Notepad++..."
-	$programUrl = "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.9.5/npp.7.9.5.portable.x64.zip" # https://github.com/notepad-plus-plus/notepad-plus-plus/releases/
+
+	$repo = "notepad-plus-plus/notepad-plus-plus"
+	$releases = "https://api.github.com/repos/$repo/releases/latest"
+	$tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name.Substring(1)
+	If ($tag.length -lt 3) {
+		$tag = "$tag.0"
+	}
+	$file = "npp.$tag.portable.x64.zip"
+	$programUrl = "https://github.com/$repo/releases/latest/download/$file"
+	Write-Output "Using download URL $programUrl"
+
 	$programOutput = "$PSScriptRoot\download\npp_portable_x64.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
