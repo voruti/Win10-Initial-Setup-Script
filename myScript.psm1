@@ -28,14 +28,14 @@ Function CheckRunningProgram {
 }
 
 # Check for all running programs to prevent conflicts
-Function CheckAllRunningPrograms {
-	Write-Output "Checking all running programs..."
-	$processes = @('firefox', 'CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'notepad++', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty', 'MailCheck', 'node')
+# Function CheckAllRunningPrograms {
+# 	Write-Output "Checking all running programs..."
+# 	$processes = @('firefox', 'CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'notepad++', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty', 'MailCheck', 'node')
 
-	foreach ($process in $processes) {
-		CheckRunningProgram $process
-	}
-}
+# 	foreach ($process in $processes) {
+# 		CheckRunningProgram $process
+# 	}
+# }
 
 # Create a download folder
 Function CreateDownloadFolder {
