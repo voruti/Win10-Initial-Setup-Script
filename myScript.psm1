@@ -30,7 +30,7 @@ Function CheckRunningProgram {
 # Check for all running programs to prevent conflicts
 Function CheckAllRunningPrograms {
 	Write-Output "Checking all running programs..."
-	$processes = @('firefox', 'CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'notepad++', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty', 'MailCheck')
+	$processes = @('firefox', 'CCleaner64', 'CCleaner', 'KeePass', 'OOSU10', 'notepad++', 'Code', 'vsls-agent', 'git-bash', 'bash', 'git', 'sh', 'GitHubDesktop', 'mintty', 'MailCheck', 'node')
 
 	foreach ($process in $processes) {
 		CheckRunningProgram $process
@@ -55,6 +55,7 @@ Function UpdateAllPrograms {
 	UpdateVSCode
 	UpdateGit
 	UpdateMailCheck
+	# UpdateNodeJs
 }
 
 # Print some empty lines to the console
@@ -420,7 +421,7 @@ Function InstallGit {
 	If (!([System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) -Match [regex]::escape("$programDirectory\cmd"))) {
 		[System.Environment]::SetEnvironmentVariable(
 			"Path", 
-			[System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) + ";$programDirectory\cmd", 
+			[System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) + ";$programDirectory\cmd",
 			[System.EnvironmentVariableTarget]::User
 		)
 	}
@@ -490,6 +491,67 @@ Function UpdateMailCheck {
 		InstallMailCheck
 	}
 }
+
+
+# Remove NodeJs
+# Function RemoveNodeJs {
+# 	Write-Output "Removing NodeJs..."
+# 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\NodeJs"
+
+# 	CheckRunningProgram "node"
+
+# 	Remove-Item -path $programDirectory -recurse
+# }
+
+# Download NodeJs
+Function DownloadNodeJs {
+	Write-Output "Downloading NodeJs..."
+	$programUrl = "https://nodejs.org/dist/v16.4.1/node-v16.4.1-win-x64.zip"
+	$programOutput = "$PSScriptRoot\download\NodeJs.zip"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
+
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
+}
+
+# Install NodeJs
+Function InstallNodeJs {
+	Write-Output "Installing NodeJs..."
+	$programOutput = "$PSScriptRoot\download\NodeJs.zip"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\NodeJs"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadNodeJs
+	}
+	CheckRunningProgram "node"
+	
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, "$programDirectory\..")
+
+	Rename-Item "$programDirectory\..\node-v16.4.1-win-x64" $programDirectory
+
+	If (!([System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) -Match [regex]::escape("$programDirectory"))) {
+		[System.Environment]::SetEnvironmentVariable(
+			"Path", 
+			[System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) + ";$programDirectory",
+			[System.EnvironmentVariableTarget]::User
+		)
+	}
+}
+
+# Update NodeJs, if installed
+# Function UpdateNodeJs {
+# 	Write-Output "Updating NodeJs..."
+# 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\NodeJs"
+	
+# 	if (Test-Path $programDirectory\*) {
+# 		DownloadNodeJs
+# 		RemoveNodeJs
+# 		InstallNodeJs
+# 	}
+# }
 
 
 
