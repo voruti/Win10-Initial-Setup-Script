@@ -243,15 +243,8 @@ Function DownloadNPP {
 	Write-Output "Downloading Notepad++..."
 
 	$repo = "notepad-plus-plus/notepad-plus-plus"
-	$releases = "https://api.github.com/repos/$repo/releases/latest"
-	$tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name.Substring(1)
-	If ($tag.length -lt 3) {
-		$tag = "$tag.0"
-	}
-	$file = "npp.$tag.portable.x64.zip"
-	$programUrl = "https://github.com/$repo/releases/latest/download/$file"
-	Write-Output "Using download URL $programUrl"
-
+	$file = "portable.x64.zip"
+	$programUrl = "https://github.redno.de/$repo/$file"
 	$programOutput = "$PSScriptRoot\download\npp_portable_x64.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -369,12 +362,8 @@ Function DownloadGit {
 	Write-Output "Downloading Git..."
 
 	$repo = "git-for-windows/git"
-	$releases = "https://api.github.com/repos/$repo/releases/latest"
-	$tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name.Substring(1).Replace(".windows.1", "")
-	$file = "PortableGit-$tag-64-bit.7z.exe"
-	$programUrl = "https://github.com/$repo/releases/latest/download/$file"
-	Write-Output "Using download URL $programUrl"
-
+	$file = "ortable.*64.*7z.exe"
+	$programUrl = "https://github.redno.de/$repo/$file"
 	$programOutput = "$PSScriptRoot\download\Git.7z.exe"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
