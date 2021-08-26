@@ -3210,6 +3210,21 @@ Function InstallOneDrive {
 	Start-Process $onedrive -NoNewWindow
 }
 
+# Disable MeetNowIcon
+Function DisableMeetNow {
+	Write-Output "Disabling MeetNow..."
+	If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {
+		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAMeetNow" -Type DWord -Value 1
+}
+
+# Enable MeetNowIcon
+Function EnableMeetNow {
+	Write-Output "Enabling MeetNow..."
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAMeetNow" -ErrorAction SilentlyContinue
+}
+
 # Uninstall default Microsoft applications
 Function UninstallMsftBloat {
 	Write-Output "Uninstalling default Microsoft applications..."
