@@ -203,6 +203,7 @@ UninstallPowerShellV2             # InstallPowerShellV2
 UninstallXPSPrinter               # InstallXPSPrinter
 RemoveFaxPrinter                  # AddFaxPrinter
 # UninstallFaxAndScan             # InstallFaxAndScan
+DisableMeetNow                    # EnableMeetNow
 
 
 ### Server Specific Tweaks ###
