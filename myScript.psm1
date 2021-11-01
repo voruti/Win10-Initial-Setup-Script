@@ -107,7 +107,7 @@ Function RemoveCCleaner {
 # Download CCleaner
 Function DownloadCCleaner {
 	Write-Output "Downloading CCleaner..."
-	$programUrl = "https://download.ccleaner.com/portable/ccsetup584.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
+	$programUrl = "https://download.ccleaner.com/portable/ccsetup586.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
 	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
