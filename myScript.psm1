@@ -283,6 +283,9 @@ Function RemoveVSCode {
 	CheckRunningProgram "sh"
 	CheckRunningProgram "mintty"
 
+	Write-Output "Ensure no program accesses the $programDirectory path!"
+	WaitForKey
+
 	Remove-Item -path $programDirectory -recurse
 }
 
