@@ -546,6 +546,73 @@ Function InstallNodeJs {
 # }
 
 
+# Remove OBS
+Function RemoveOBS {
+	Write-Output "Removing OBS..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\OBS"
+	
+	CheckRunningProgram "obs-browser-page"
+	CheckRunningProgram "obs64"
+	
+	Write-Output "Creating backup of OBS..."
+	$targetDir = [Environment]::GetFolderPath('MyDocuments') + "\"
+	$targetFilenameBase = 'OBS_';
+	
+	$date = get-date;
+	$dateStr = $date.ToString("yyyyMMdd_HHmmss");
+	$targetFile = $targetDir + $targetFilenameBase + $dateStr + '.zip';
+	
+	Add-Type -A 'System.IO.Compression.FileSystem';
+	[IO.Compression.ZipFile]::CreateFromDirectory($programDirectory, $targetFile);
+	Write-Output "Backup of OBS finished..."
+	
+	Write-Output "Removing OBS files..."
+	Remove-Item -path $programDirectory -recurse
+}
+
+# Download OBS
+Function DownloadOBS {
+	Write-Output "Downloading OBS..."
+	$repo = "obsproject/obs-studio"
+	$file = "x64.zip"
+	$programUrl = "https://github.redno.de/$repo/$file"
+	$programOutput = "$PSScriptRoot\download\OBS.zip"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
+
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
+}
+
+# Install OBS
+Function InstallOBS {
+	Write-Output "Installing OBS..."
+	$programOutput = "$PSScriptRoot\download\OBS.zip"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\OBS"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadOBS
+	}
+	CheckRunningProgram "obs-browser-page"
+	CheckRunningProgram "obs64"
+	
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
+}
+
+# Update OBS, if installed
+# Function UpdateOBS {
+# 	Write-Output "Updating OBS..."
+# 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\OBS"
+	
+# 	if (Test-Path $programDirectory\*) {
+# 		DownloadOBS
+# 		RemoveOBS
+# 		InstallOBS
+# 	}
+# }
+
 
 # Export functions
 Export-ModuleMember -Function *
