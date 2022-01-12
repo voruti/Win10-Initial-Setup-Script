@@ -18,14 +18,14 @@ UnpinTaskbarIcons
 
 ### Custom - myScript ###
 InstallFirefox
-InstallCCleaner
-InstallKeePass
-DownloadShutUp10
-InstallThisIsWin11
-DownloadAvira
-InstallVSCode
-InstallGit
-InstallMailCheck
+#InstallCCleaner
+#InstallKeePass
+#DownloadShutUp10
+#InstallThisIsWin11
+#DownloadAvira
+#InstallVSCode
+#InstallGit
+#InstallMailCheck
 
 
 
