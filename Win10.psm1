@@ -2018,6 +2018,18 @@ Function ShowTaskbarWidgets {
 	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarDa" -Type DWord -Value 1
 }
 
+# Hide Taskbar Chat button
+Function HideTaskbarChat {
+	Write-Output "Hiding Taskbar Chat button..."
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarMn" -Type DWord -Value 0
+}
+
+# Show Taskbar Chat button
+Function ShowTaskbarChat {
+	Write-Output "Showing Taskbar Chat button..."
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarMn" -Type DWord -Value 1
+}
+
 # Show small icons in taskbar
 Function ShowSmallTaskbarIcons {
 	Write-Output "Showing small icons in taskbar..."

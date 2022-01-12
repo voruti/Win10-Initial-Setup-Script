@@ -106,6 +106,7 @@ EnableFileDeleteConfirm           # DisableFileDeleteConfirm
 HideTaskbarSearch                 # ShowTaskbarSearchIcon           # ShowTaskbarSearchBox
 # HideTaskView                    # ShowTaskView
 HideTaskbarWidgets                # ShowTaskbarWidgets
+HideTaskbarChat                   # ShowTaskbarChat
 # ShowSmallTaskbarIcons           # ShowLargeTaskbarIcons
 SetTaskbarCombineWhenFull         # SetTaskbarCombineNever          # SetTaskbarCombineAlways
 HideTaskbarPeopleIcon             # ShowTaskbarPeopleIcon
