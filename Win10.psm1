@@ -2079,6 +2079,7 @@ Function ShowTaskbarPeopleIcon {
 }
 
 # Show all tray icons
+# could be helpful: explorer shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}
 Function ShowTrayIcons {
 	Write-Output "Showing all tray icons..."
 	If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {
