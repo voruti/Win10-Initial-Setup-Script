@@ -3318,6 +3318,7 @@ Function UninstallMsftBloat {
 	Get-AppxPackage "Microsoft.OneDriveSync" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.GamingApp" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.PowerAutomateDesktop" | Remove-AppxPackage
+	Get-AppxPackage "MicrosoftWindows.Client.CBS" | Remove-AppxPackage
 }
 
 # Install default Microsoft applications
