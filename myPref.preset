@@ -105,6 +105,7 @@ ShowFileOperationsDetails         # HideFileOperationsDetails
 EnableFileDeleteConfirm           # DisableFileDeleteConfirm
 HideTaskbarSearch                 # ShowTaskbarSearchIcon           # ShowTaskbarSearchBox
 # HideTaskView                    # ShowTaskView
+HideTaskbarWidgets                # ShowTaskbarWidgets
 # ShowSmallTaskbarIcons           # ShowLargeTaskbarIcons
 SetTaskbarCombineWhenFull         # SetTaskbarCombineNever          # SetTaskbarCombineAlways
 HideTaskbarPeopleIcon             # ShowTaskbarPeopleIcon

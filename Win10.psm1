@@ -2006,6 +2006,18 @@ Function ShowTaskView {
 	Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -ErrorAction SilentlyContinue
 }
 
+# Hide Taskbar Widgets button
+Function HideTaskbarWidgets {
+	Write-Output "Hiding Taskbar Widgets button..."
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarDa" -Type DWord -Value 0
+}
+
+# Show Taskbar Widgets button
+Function ShowTaskbarWidgets {
+	Write-Output "Showing Taskbar Widgets button..."
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarDa" -Type DWord -Value 1
+}
+
 # Show small icons in taskbar
 Function ShowSmallTaskbarIcons {
 	Write-Output "Showing small icons in taskbar..."
