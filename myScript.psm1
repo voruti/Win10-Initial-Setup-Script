@@ -578,7 +578,7 @@ Function InstallNodeJs {
 
 	If (!([System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) -Match [regex]::escape("$programDirectory"))) {
 		[System.Environment]::SetEnvironmentVariable(
-			"Path", 
+			"Path",
 			[System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) + ";$programDirectory",
 			[System.EnvironmentVariableTarget]::User
 		)
