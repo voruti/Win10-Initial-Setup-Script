@@ -108,7 +108,7 @@ Function RemoveCCleaner {
 # Download CCleaner
 Function DownloadCCleaner {
 	Write-Output "Downloading CCleaner..."
-	$programUrl = "https://download.ccleaner.com/portable/ccsetup588.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
+	$programUrl = "https://download.ccleaner.com/portable/ccsetup590.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
 	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -497,7 +497,7 @@ Function RemoveMailCheck {
 # Download MailCheck
 Function DownloadMailCheck {
 	Write-Output "Downloading MailCheck..."
-	$programUrl = "https://www.d-jan.de/MailCheck2Setup123Build529-64bit.exe" # https://www.d-jan.de/download.shtml
+	$programUrl = "https://www.d-jan.de/MailCheck2Setup124Build532-64bit.exe" # https://www.d-jan.de/download.shtml
 	$programOutput = "$PSScriptRoot\download\MailCheck.exe"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -550,7 +550,7 @@ Function UpdateMailCheck {
 # Download NodeJs
 Function DownloadNodeJs {
 	Write-Output "Downloading NodeJs..."
-	$programUrl = "https://nodejs.org/dist/v16.13.1/node-v16.13.1-win-x64.zip" # https://nodejs.org/en/download/
+	$programUrl = "https://nodejs.org/dist/v16.14.0/node-v16.14.0-win-x64.zip" # https://nodejs.org/en/download/
 	$programOutput = "$PSScriptRoot\download\NodeJs.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -574,7 +574,7 @@ Function InstallNodeJs {
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, "$programDirectory\..")
 
-	Rename-Item "$programDirectory\..\node-v16.4.1-win-x64" $programDirectory
+	Rename-Item "$programDirectory\..\node-v16.14.0-win-x64" $programDirectory
 
 	If (!([System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) -Match [regex]::escape("$programDirectory"))) {
 		[System.Environment]::SetEnvironmentVariable(
