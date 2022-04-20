@@ -206,6 +206,8 @@ UninstallXPSPrinter               # InstallXPSPrinter
 RemoveFaxPrinter                  # AddFaxPrinter
 # UninstallFaxAndScan             # InstallFaxAndScan
 DisableMeetNow                    # EnableMeetNow
+DisableWidgets
+DisableFeeds
 
 
 ### Server Specific Tweaks ###
