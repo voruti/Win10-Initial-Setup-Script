@@ -666,5 +666,58 @@ Function InstallOBS {
 # }
 
 
+# Remove FileZilla
+Function RemoveFileZilla {
+	Write-Output "Removing FileZilla..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\FileZilla"
+
+	CheckRunningProgram "filezilla"
+
+	Remove-Item -path $programDirectory -recurse
+}
+
+# Download FileZilla
+Function DownloadFileZilla {
+	Write-Output "Downloading FileZilla..."
+	$programUrl = "https://dl3.cdn.filezilla-project.org/client/FileZilla_3.59.0_win64.zip?h=M5ZRHQlek3YECVubVxtaVA&x=1651358572"
+	$programOutput = "$PSScriptRoot\download\FileZilla.zip"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
+
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
+}
+
+# Install FileZilla
+Function InstallFileZilla {
+	Write-Output "Installing FileZilla..."
+	$programOutput = "$PSScriptRoot\download\FileZilla.zip"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\FileZilla"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadFileZilla
+	}
+	CheckRunningProgram "filezilla"
+	
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, "$programDirectory\..")
+
+	Rename-Item "$programDirectory\..\FileZilla-3.59.0" $programDirectory
+}
+
+# Update FileZilla, if installed
+Function UpdateFileZilla {
+	Write-Output "Updating FileZilla..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\FileZilla"
+	
+	if (Test-Path $programDirectory\*) {
+		DownloadFileZilla
+		RemoveFileZilla
+		InstallFileZilla
+	}
+}
+
+
 # Export functions
 Export-ModuleMember -Function *
