@@ -5,6 +5,8 @@
 # Source: https://github.com/Disassembler0/Win10-Initial-Setup-Script
 ##########
 
+$ErrorActionPreference = "Inquire"
+
 # Relaunch the script with administrator privileges
 Function RequireAdmin {
 	If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator")) {
