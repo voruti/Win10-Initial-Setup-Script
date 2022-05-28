@@ -102,7 +102,10 @@ Function RemoveCCleaner {
 	CheckRunningProgram "CCleaner64"
 	CheckRunningProgram "CCleaner"
 
-	Remove-Item -path $programDirectory -recurse -exclude ccleaner.ini
+	Get-ChildItem -path $programDirectory -File -recurse |
+		Select-Object -ExpandProperty FullName |
+		Where-Object {$_ -notlike '*ccleaner.ini'} |
+		Remove-Item
 }
 
 # Download CCleaner
