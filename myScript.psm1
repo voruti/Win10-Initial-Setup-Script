@@ -111,7 +111,7 @@ Function RemoveCCleaner {
 # Download CCleaner
 Function DownloadCCleaner {
 	Write-Output "Downloading CCleaner..."
-	$programUrl = "https://download.ccleaner.com/portable/ccsetup592.zip" # https://www.ccleaner.com/de-de/ccleaner/builds
+	$programUrl = "https://download.ccleaner.com/portable/ccsetup592.zip" # https://www.ccleaner.com/de-de/ccleaner/builds # manualUpdate
 	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -500,7 +500,7 @@ Function RemoveMailCheck {
 # Download MailCheck
 Function DownloadMailCheck {
 	Write-Output "Downloading MailCheck..."
-	$programUrl = "https://www.d-jan.de/MailCheck2Setup126Build536-64bit.exe" # https://www.d-jan.de/download.shtml
+	$programUrl = "https://www.d-jan.de/MailCheck2Setup127Build540-64bit.exe" # https://www.d-jan.de/download.shtml # manualUpdate
 	$programOutput = "$PSScriptRoot\download\MailCheck.exe"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -553,7 +553,7 @@ Function UpdateMailCheck {
 # Download NodeJs
 Function DownloadNodeJs {
 	Write-Output "Downloading NodeJs..."
-	$programUrl = "https://nodejs.org/dist/v16.15.0/node-v16.15.0-win-x64.zip" # https://nodejs.org/en/download/
+	$programUrl = "https://nodejs.org/dist/v16.16.0/node-v16.16.0-win-x64.zip" # https://nodejs.org/en/download/ # manualUpdate
 	$programOutput = "$PSScriptRoot\download\NodeJs.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -577,7 +577,7 @@ Function InstallNodeJs {
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, "$programDirectory\..")
 
-	Rename-Item "$programDirectory\..\node-v16.15.0-win-x64" $programDirectory
+	Rename-Item "$programDirectory\..\node-v16.16.0-win-x64" $programDirectory # manualUpdate
 
 	If (!([System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) -Match [regex]::escape("$programDirectory"))) {
 		[System.Environment]::SetEnvironmentVariable(
@@ -682,7 +682,7 @@ Function RemoveFileZilla {
 # Download FileZilla
 Function DownloadFileZilla {
 	Write-Output "Downloading FileZilla..."
-	$programUrl = "https://dl3.cdn.filezilla-project.org/client/FileZilla_3.59.0_win64.zip?h=M5ZRHQlek3YECVubVxtaVA&x=1651358572"
+	$programUrl = "https://dl3.cdn.filezilla-project.org/client/FileZilla_3.59.0_win64.zip?h=M5ZRHQlek3YECVubVxtaVA&x=1651358572" # manualUpdate
 	$programOutput = "$PSScriptRoot\download\FileZilla.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -706,7 +706,7 @@ Function InstallFileZilla {
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, "$programDirectory\..")
 
-	Rename-Item "$programDirectory\..\FileZilla-3.59.0" $programDirectory
+	Rename-Item "$programDirectory\..\FileZilla-3.59.0" $programDirectory # manualUpdate
 }
 
 # Update FileZilla, if installed
