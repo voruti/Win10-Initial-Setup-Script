@@ -553,7 +553,7 @@ Function UpdateMailCheck {
 # Download NodeJs
 Function DownloadNodeJs {
 	Write-Output "Downloading NodeJs..."
-	$programUrl = "https://nodejs.org/dist/v16.16.0/node-v16.16.0-win-x64.zip" # https://nodejs.org/en/download/ # manualUpdate
+	$programUrl = "https://nodejs.org/dist/v18.12.1/node-v18.12.1-win-x64.zip" # https://nodejs.org/en/download/ # manualUpdate
 	$programOutput = "$PSScriptRoot\download\NodeJs.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -577,7 +577,7 @@ Function InstallNodeJs {
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, "$programDirectory\..")
 
-	Rename-Item "$programDirectory\..\node-v16.16.0-win-x64" $programDirectory # manualUpdate
+	Rename-Item "$programDirectory\..\node-v18.12.1-win-x64" $programDirectory # manualUpdate
 
 	If (!([System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) -Match [regex]::escape("$programDirectory"))) {
 		[System.Environment]::SetEnvironmentVariable(
