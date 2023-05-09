@@ -111,7 +111,7 @@ Function RemoveCCleaner {
 # Download CCleaner
 Function DownloadCCleaner {
 	Write-Output "Downloading CCleaner..."
-	$programUrl = "https://download.ccleaner.com/portable/ccsetup592.zip" # https://www.ccleaner.com/de-de/ccleaner/builds # manualUpdate
+	$programUrl = "https://download.ccleaner.com/portable/ccsetup611.zip" # https://www.ccleaner.com/de-de/ccleaner/builds # manualUpdate
 	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -553,7 +553,7 @@ Function UpdateMailCheck {
 # Download NodeJs
 Function DownloadNodeJs {
 	Write-Output "Downloading NodeJs..."
-	$programUrl = "https://nodejs.org/dist/v18.14.0/node-v18.14.0-win-x64.zip" # https://nodejs.org/en/download/ # manualUpdate
+	$programUrl = "https://nodejs.org/dist/v18.16.0/node-v18.16.0-win-x64.zip" # https://nodejs.org/en/download/ # manualUpdate
 	$programOutput = "$PSScriptRoot\download\NodeJs.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -577,7 +577,7 @@ Function InstallNodeJs {
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, "$programDirectory\..")
 
-	Rename-Item "$programDirectory\..\node-v18.14.0-win-x64" $programDirectory # manualUpdate
+	Rename-Item "$programDirectory\..\node-v18.16.0-win-x64" $programDirectory # manualUpdate
 
 	If (!([System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) -Match [regex]::escape("$programDirectory"))) {
 		[System.Environment]::SetEnvironmentVariable(
