@@ -292,6 +292,25 @@ Function RemoveVSCode {
 	Remove-Item -path $programDirectory -recurse
 }
 
+# Remove VSCode Insiders
+Function RemoveVSCodeInsiders {
+	Write-Output "Removing VSCode Insiders..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCodeInsiders"
+
+	CheckRunningProgram "Code"
+	CheckRunningProgram "vsls-agent"
+	CheckRunningProgram "git-bash"
+	CheckRunningProgram "bash"
+	CheckRunningProgram "git"
+	CheckRunningProgram "sh"
+	CheckRunningProgram "mintty"
+
+	Write-Output "Ensure no program accesses the $programDirectory path!"
+	WaitForKey
+
+	Remove-Item -path $programDirectory -recurse
+}
+
 # Download VSCode
 Function DownloadVSCode {
 	Write-Output "Downloading VSCode..."
@@ -305,11 +324,11 @@ Function DownloadVSCode {
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
-# Download VSCode
+# Download VSCode Insiders
 Function DownloadVSCodeInsiders {
 	Write-Output "Downloading VSCode Insiders..."
 	$programUrl = "https://code.visualstudio.com/sha/download?build=insider&os=win32-x64-archive"
-	$programOutput = "$PSScriptRoot\download\VSCode.zip"
+	$programOutput = "$PSScriptRoot\download\VSCodeInsiders.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
 		CreateDownloadFolder
@@ -346,6 +365,27 @@ Function InstallVSCode {
 	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{771FD6B0-FA20-440A-A002-3B3BAC16DC50}_is1" -Name "Publisher" -Type String -Value "Microsoft Corporation"
 }
 
+# Install VSCode Insiders
+Function InstallVSCodeInsiders {
+	Write-Output "Installing VSCode Insiders..."
+	$programOutput = "$PSScriptRoot\download\VSCodeInsiders.zip"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCodeInsiders"
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadVSCodeInsiders
+	}
+	CheckRunningProgram "Code"
+	CheckRunningProgram "vsls-agent"
+	CheckRunningProgram "git-bash"
+	CheckRunningProgram "bash"
+	CheckRunningProgram "git"
+	CheckRunningProgram "sh"
+	CheckRunningProgram "mintty"
+	
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
+}
+
 # Update VSCode, if installed
 Function UpdateVSCode {
 	Write-Output "Updating VSCode..."
@@ -358,15 +398,15 @@ Function UpdateVSCode {
 	}
 }
 
-# Update VSCode, if installed
+# Update VSCode Insiders, if installed
 Function UpdateVSCodeInsiders {
 	Write-Output "Updating VSCode Insiders..."
-	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCode"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCodeInsiders"
 	
 	if (Test-Path $programDirectory\*) {
 		DownloadVSCodeInsiders
-		RemoveVSCode
-		InstallVSCode
+		RemoveVSCodeInsiders
+		InstallVSCodeInsiders
 	}
 }
 
