@@ -52,7 +52,6 @@ Function UpdateAllPrograms {
 	UpdateCCleaner
 	UpdateKeePass
 	UpdateShutUp10
-	UpdateThisIsWin11
 	UpdateVSCode
 	UpdateGit
 	UpdateMailCheck
@@ -224,57 +223,6 @@ Function UpdateShutUp10 {
 	
 	if (Test-Path $programDirectory\*) {
 		DownloadShutUp10
-	}
-}
-
-
-# Remove ThisIsWin11
-Function RemoveThisIsWin11 {
-	Write-Output "Removing ThisIsWin11..."
-	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\ThisIsWin11"
-
-	CheckRunningProgram "ThisIsWin11"
-
-	Remove-Item -path $programDirectory -recurse
-}
-
-# Download ThisIsWin11
-Function DownloadThisIsWin11 {
-	Write-Output "Downloading ThisIsWin11..."
-	$programUrl = "https://github.com/builtbybel/ThisIsWin11/releases/latest/download/TIW11.zip"
-	$programOutput = "$PSScriptRoot\download\TIW11.zip"
-
-	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
-		CreateDownloadFolder
-	}
-
-	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
-}
-
-# Install ThisIsWin11 (https://github.com/builtbybel/ThisIsWin11)
-Function InstallThisIsWin11 {
-	Write-Output "Installing ThisIsWin11..."
-	$programOutput = "$PSScriptRoot\download\TIW11.zip"
-	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\ThisIsWin11"
-
-	If (!(Test-Path -PathType Leaf "$programOutput")) {
-		DownloadThisIsWin11
-	}
-	CheckRunningProgram "ThisIsWin11"
-	
-	Add-Type -AssemblyName System.IO.Compression.FileSystem
-	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, $programDirectory)
-}
-
-# Update ThisIsWin11, if installed
-Function UpdateThisIsWin11 {
-	Write-Output "Updating ThisIsWin11..."
-	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\ThisIsWin11"
-	
-	if (Test-Path $programDirectory\*) {
-		DownloadThisIsWin11
-		RemoveThisIsWin11
-		InstallThisIsWin11
 	}
 }
 
