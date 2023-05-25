@@ -305,6 +305,19 @@ Function DownloadVSCode {
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
+# Download VSCode
+Function DownloadVSCodeInsiders {
+	Write-Output "Downloading VSCode Insiders..."
+	$programUrl = "https://code.visualstudio.com/sha/download?build=insider&os=win32-x64-archive"
+	$programOutput = "$PSScriptRoot\download\VSCode.zip"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
+
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
+}
+
 # Install VSCode
 Function InstallVSCode {
 	Write-Output "Installing VSCode..."
@@ -340,6 +353,18 @@ Function UpdateVSCode {
 	
 	if (Test-Path $programDirectory\*) {
 		DownloadVSCode
+		RemoveVSCode
+		InstallVSCode
+	}
+}
+
+# Update VSCode, if installed
+Function UpdateVSCodeInsiders {
+	Write-Output "Updating VSCode Insiders..."
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCode"
+	
+	if (Test-Path $programDirectory\*) {
+		DownloadVSCodeInsiders
 		RemoveVSCode
 		InstallVSCode
 	}
