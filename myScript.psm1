@@ -53,6 +53,7 @@ Function UpdateAllPrograms {
 	UpdateKeePass
 	UpdateShutUp10
 	UpdateVSCode
+	UpdateVSCodeInsiders
 	UpdateGit
 	UpdateMailCheck
 	# UpdateNodeJs
@@ -297,7 +298,7 @@ Function RemoveVSCodeInsiders {
 	Write-Output "Removing VSCode Insiders..."
 	$programDirectory = [Environment]::GetFolderPath('MyDocuments') + "\VSCodeInsiders"
 
-	CheckRunningProgram "Code"
+	CheckRunningProgram "Code - Insiders"
 	CheckRunningProgram "vsls-agent"
 	CheckRunningProgram "git-bash"
 	CheckRunningProgram "bash"
@@ -374,7 +375,7 @@ Function InstallVSCodeInsiders {
 	If (!(Test-Path -PathType Leaf "$programOutput")) {
 		DownloadVSCodeInsiders
 	}
-	CheckRunningProgram "Code"
+	CheckRunningProgram "Code - Insiders"
 	CheckRunningProgram "vsls-agent"
 	CheckRunningProgram "git-bash"
 	CheckRunningProgram "bash"
