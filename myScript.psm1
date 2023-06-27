@@ -736,5 +736,21 @@ Function UpdateFileZilla {
 }
 
 
+# Download Calibre
+Function DownloadCalibre {
+	Write-Output "Downloading Calibre..."
+	$repo = "kovidgoyal/calibre"
+	$file = "ortable"
+	$programUrl = "https://github.redno.de/$repo/$file"
+	$programOutput = "$PSScriptRoot\download\Calibre.exe"
+
+	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
+		CreateDownloadFolder
+	}
+
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
+}
+
+
 # Export functions
 Export-ModuleMember -Function *
