@@ -751,6 +751,27 @@ Function DownloadCalibre {
 	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput
 }
 
+# Install Calibre
+Function InstallCalibre {
+	Write-Output "Installing Calibre..."
+	$programOutput = "$PSScriptRoot\download\Calibre.exe"
+	$programDirectory = [Environment]::GetFolderPath('MyDocuments')
+
+	If (!(Test-Path -PathType Leaf "$programOutput")) {
+		DownloadCalibre
+	}
+	CheckRunningProgram "calibre"
+	CheckRunningProgram "calibre-portable"
+	CheckRunningProgram "calibre-complete"
+	CheckRunningProgram "calibre-parallel"
+	CheckRunningProgram "calibre-server"
+	CheckRunningProgram "QtWebEngineProcess"
+	CheckRunningProgram "ebook-viewer"
+	CheckRunningProgram "lrfviewer"
+	
+	Start-Process -Wait $programOutput -ArgumentList "`"$programDirectory`""
+}
+
 
 # Export functions
 Export-ModuleMember -Function *
