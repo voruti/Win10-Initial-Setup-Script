@@ -514,7 +514,7 @@ Function RemoveMailCheck {
 # Download MailCheck
 Function DownloadMailCheck {
 	Write-Output "Downloading MailCheck..."
-	$programUrl = "https://www.d-jan.de/MailCheck2Setup134Build562-64bit.exe" # https://www.d-jan.de/download.shtml # manualUpdate
+	$programUrl = "https://www.d-jan.de/MailCheck2Setup135Build564-64bit.exe" # https://www.d-jan.de/download.shtml # manualUpdate
 	$programOutput = "$PSScriptRoot\download\MailCheck.exe"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
