@@ -3301,7 +3301,7 @@ Function UninstallMsftBloat {
 	Get-AppxPackage "Microsoft.WindowsFeedbackHub" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.WindowsMaps" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.WindowsPhone" | Remove-AppxPackage
-	Get-AppxPackage "Microsoft.Windows.Photos" | Remove-AppxPackage
+	# Get-AppxPackage "Microsoft.Windows.Photos" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.WindowsReadingList" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.WindowsScan" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.WindowsSoundRecorder" | Remove-AppxPackage
@@ -3311,8 +3311,8 @@ Function UninstallMsftBloat {
 	Get-AppxPackage "Microsoft.ZuneMusic" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.ZuneVideo" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.Advertising.Xaml" | Remove-AppxPackage # Dependency for microsoft.windowscommunicationsapps, Microsoft.BingWeather
-	Get-AppxPackage "Microsoft.WindowsCalculator" | Remove-AppxPackage
-	Get-AppxPackage "Microsoft.WindowsNotepad" | Remove-AppxPackage
+	# Get-AppxPackage "Microsoft.WindowsCalculator" | Remove-AppxPackage
+	# Get-AppxPackage "Microsoft.WindowsNotepad" | Remove-AppxPackage
 	Get-AppxPackage "MicrosoftTeams" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.Paint" | Remove-AppxPackage
 	Get-AppxPackage "Microsoft.ScreenSketch" | Remove-AppxPackage

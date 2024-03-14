@@ -9,7 +9,7 @@
 DisableTelemetry                  # EnableTelemetry
 DisableWiFiSense                  # EnableWiFiSense
 # DisableSmartScreen              # EnableSmartScreen
-EnableWebSearch                   # DisableWebSearch
+# EnableWebSearch                 # DisableWebSearch
 DisableAppSuggestions             # EnableAppSuggestions
 DisableActivityHistory            # EnableActivityHistory
 # DisableBackgroundApps           # EnableBackgroundApps
@@ -28,8 +28,8 @@ DisableCortana                    # EnableCortana
 SetP2PUpdateDisable               # SetP2PUpdateLocal           # SetP2PUpdateInternet
 DisableDiagTrack                  # EnableDiagTrack
 DisableWAPPush                    # EnableWAPPush
-EnableClearRecentFiles            # DisableClearRecentFiles
-DisableRecentFiles                # EnableRecentFiles
+# EnableClearRecentFiles          # DisableClearRecentFiles
+# DisableRecentFiles              # EnableRecentFiles
 
 
 ### Security Tweaks ###
@@ -97,7 +97,7 @@ DisableFastStartup                # EnableFastStartup
 # DisableLockScreenRS1            # EnableLockScreenRS1
 # HideNetworkFromLockScreen       # ShowNetworkOnLockScreen
 # HideShutdownFromLockScreen      # ShowShutdownOnLockScreen
-DisableLockScreenBlur             # EnableLockScreenBlur
+# DisableLockScreenBlur           # EnableLockScreenBlur
 DisableAeroShake                  # EnableAeroShake
 DisableAccessibilityKeys          # EnableAccessibilityKeys
 ShowTaskManagerDetails            # HideTaskManagerDetails
@@ -113,15 +113,15 @@ HideTaskbarPeopleIcon             # ShowTaskbarPeopleIcon
 # ShowTrayIcons                   # HideTrayIcons
 DisableSearchAppInStore           # EnableSearchAppInStore
 # DisableNewAppPrompt             # EnableNewAppPrompt
-ShowRecentlyAddedApps             # HideRecentlyAddedApps
+# ShowRecentlyAddedApps           # HideRecentlyAddedApps
 # HideMostUsedApps                # ShowMostUsedApps
 # SetControlPanelSmallIcons       # SetControlPanelLargeIcons       # SetControlPanelCategories
 DisableShortcutInName             # EnableShortcutInName
 # HideShortcutArrow               # ShowShortcutArrow
 # SetVisualFXPerformance          # SetVisualFXAppearance
 EnableTitleBarColor               # DisableTitleBarColor
-SetAppsDarkMode
-SetSystemDarkMode
+# SetAppsDarkMode
+# SetSystemDarkMode
 # EnableDarkTheme                 # DisableDarkTheme
 # AddENKeyboard                   # RemoveENKeyboard
 EnableNumlock                     # DisableNumlock
@@ -149,9 +149,9 @@ ShowEncCompFilesColor             # HideEncCompFilesColor
 # HideSelectCheckboxes            # ShowSelectCheckboxes
 # HideSyncNotifications           # ShowSyncNotifications
 # HideRecentShortcuts             # ShowRecentShortcuts
-SetExplorerThisPC                 # SetExplorerQuickAccess
+# SetExplorerThisPC               # SetExplorerQuickAccess
 # HideQuickAccess                 # ShowQuickAccess
-ShowRecycleBinOnDesktop           # HideRecycleBinFromDesktop
+# ShowRecycleBinOnDesktop         # HideRecycleBinFromDesktop
 # ShowThisPCOnDesktop             # HideThisPCFromDesktop
 # ShowUserFolderOnDesktop         # HideUserFolderFromDesktop
 # ShowControlPanelOnDesktop       # HideControlPanelFromDesktop
@@ -170,7 +170,7 @@ ShowRecycleBinOnDesktop           # HideRecycleBinFromDesktop
 # HideVideosFromExplorer          # ShowVideosInExplorer
 # Hide3DObjectsFromThisPC         # Show3DObjectsInThisPC
 # Hide3DObjectsFromExplorer       # Show3DObjectsInExplorer
-HideIncludeInLibraryMenu          # ShowIncludeInLibraryMenu
+# HideIncludeInLibraryMenu        # ShowIncludeInLibraryMenu
 # HideGiveAccessToMenu            # ShowGiveAccessToMenu
 # HideShareMenu                   # ShowShareMenu
 # DisableThumbnails               # EnableThumbnails
