@@ -111,7 +111,7 @@ Function RemoveCCleaner {
 # Download CCleaner
 Function DownloadCCleaner {
 	Write-Output "Downloading CCleaner..."
-	$programUrl = "https://download.ccleaner.com/portable/ccsetup622.zip" # https://www.ccleaner.com/de-de/ccleaner/builds # manualUpdate
+	$programUrl = "https://download.ccleaner.com/portable/ccsetup623.zip" # https://www.ccleaner.com/de-de/ccleaner/builds # manualUpdate
 	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -514,7 +514,7 @@ Function RemoveMailCheck {
 # Download MailCheck
 Function DownloadMailCheck {
 	Write-Output "Downloading MailCheck..."
-	$programUrl = "https://www.d-jan.de/MailCheck2Setup135Build564-64bit.exe" # https://www.d-jan.de/download.shtml # manualUpdate
+	$programUrl = "https://www.d-jan.de/MailCheck2Setup136Build568-64bit.exe" # https://www.d-jan.de/download.shtml # manualUpdate
 	$programOutput = "$PSScriptRoot\download\MailCheck.exe"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
