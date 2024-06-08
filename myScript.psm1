@@ -170,7 +170,7 @@ Function DownloadKeePass {
 		CreateDownloadFolder
 	}
 
-	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::FireFox
+	Invoke-WebRequest -Uri $programUrl -OutFile $programOutput -UserAgent "Curl"
 }
 
 # Install KeePass
