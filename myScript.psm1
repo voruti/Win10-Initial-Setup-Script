@@ -111,7 +111,7 @@ Function RemoveCCleaner {
 # Download CCleaner
 Function DownloadCCleaner {
 	Write-Output "Downloading CCleaner..."
-	$programUrl = "https://download.ccleaner.com/portable/ccsetup633.zip" # https://www.ccleaner.com/de-de/ccleaner/builds # manualUpdate
+	$programUrl = "https://download.ccleaner.com/portable/ccsetup637.zip" # https://www.ccleaner.com/de-de/ccleaner/builds # manualUpdate
 	$programOutput = "$PSScriptRoot\download\ccsetup.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -514,7 +514,7 @@ Function RemoveMailCheck {
 # Download MailCheck
 Function DownloadMailCheck {
 	Write-Output "Downloading MailCheck..."
-	$programUrl = "https://www.d-jan.de/MailCheck2Setup141Build581-64bit.exe" # https://www.d-jan.de/download.shtml # manualUpdate
+	$programUrl = "https://www.d-jan.de/MailCheck2Setup142Build582-64bit.exe" # https://www.d-jan.de/download.shtml # manualUpdate
 	$programOutput = "$PSScriptRoot\download\MailCheck.exe"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -567,7 +567,7 @@ Function UpdateMailCheck {
 # Download NodeJs
 Function DownloadNodeJs {
 	Write-Output "Downloading NodeJs..."
-	$programUrl = "https://nodejs.org/dist/v22.14.0/node-v22.14.0-win-x64.zip" # https://nodejs.org/en/download/ # manualUpdate
+	$programUrl = "https://nodejs.org/dist/v22.17.1/node-v22.17.1-win-x64.zip" # https://nodejs.org/en/download/ # manualUpdate
 	$programOutput = "$PSScriptRoot\download\NodeJs.zip"
 
 	If (!(Test-Path -PathType Container "$PSScriptRoot\download")) {
@@ -591,7 +591,7 @@ Function InstallNodeJs {
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($programOutput, "$programDirectory\..")
 
-	Rename-Item "$programDirectory\..\node-v22.14.0-win-x64" $programDirectory # manualUpdate
+	Rename-Item "$programDirectory\..\node-v22.17.1-win-x64" $programDirectory # manualUpdate
 
 	If (!([System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User) -Match [regex]::escape("$programDirectory"))) {
 		[System.Environment]::SetEnvironmentVariable(
