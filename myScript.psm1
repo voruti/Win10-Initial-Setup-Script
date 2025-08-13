@@ -157,7 +157,7 @@ Function RemoveKeePass {
 
 	CheckRunningProgram "KeePass"
 
-	Remove-Item -path $programDirectory -recurse -include Languages, Plugins, XSL, KeePass.chm, KeePass.exe, KeePass.exe.config, KeePass.XmlSerializers.dll, KeePassLibC32.dll, KeePassLibC64.dll, License.txt, ShInstUtil.exe
+	Remove-Item -path $programDirectory -recurse -include Languages, Plugins, XSL, KeePass.chm, KeePass.exe, KeePass.exe.config, KeePass.XmlSerializers.dll, KeePassLibC32.dll, KeePassLibC64.dll, KeePassLibN.x32.dll, KeePassLibN.a64.dll, KeePassLibN.x64.dll, License.txt, ShInstUtil.exe
 }
 
 # Download KeePass
